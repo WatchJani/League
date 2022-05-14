@@ -10,7 +10,11 @@ export const Register = () => {
         phone: null,
     })
 
-    const Submit = () => {
+
+
+    const Submit = (e) => {
+        e.preventDefault()
+
         axios.post("http://localhost:5000/register",
             {
                 Username: data.username,
@@ -18,13 +22,11 @@ export const Register = () => {
                 Email: data.email,
                 Phone: data.phone,
             }
-        )
-            .then(() => {
-                console.log("Successfully sent")
-            })
-            .catch(err => {
-                console.log(err.message)
-            })
+        ).then(() => {
+            console.log("Successfully sent")
+        }).catch(err => {
+            console.log(err.response.data)
+        })
     }
 
     const newValue = (e) => {
@@ -34,8 +36,8 @@ export const Register = () => {
     return (
         <form onSubmit={Submit}>
             <input type="text" placeholder="username" name="username" onChange={newValue} />
-            <input type="password" placeholder="password" name="password" onChange={newValue} />
-            <input type="text" name="email" placeholder="e-mail" onChange={newValue} />
+            <input type="password" autoComplete="true" placeholder="password" name="password" onChange={newValue} />
+            <input type="text" autoComplete="true" name="email" placeholder="e-mail" onChange={newValue} />
             <input type="text" name="phone" placeholder="phone" onChange={newValue} />
             <button type="submit">Register</button>
         </form>
