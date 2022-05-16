@@ -22,6 +22,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(authRouts);
 
+
 app.listen(PORT, () => {
   console.log(`server slusa na portu ${PORT}`);
 });

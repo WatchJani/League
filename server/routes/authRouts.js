@@ -3,8 +3,9 @@ const authController = require("../controllers/authController")
 
 const router = Router()
 
-router.post("/login", authController.Post_Login)
-router.post("/register", authController.Post_Register)
+router.post("/login", authController.login_Post)
+router.post("/register", authController.register_Post)
+router.get("/logout", authController.logout_Get)
 
 
 module.exports = router
