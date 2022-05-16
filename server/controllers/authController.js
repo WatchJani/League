@@ -15,10 +15,11 @@ module.exports.Post_Login = async (req, res) => {
 
   try {
     const user = await User.login(email, password);
-    res.status(201).json({ user: user._id });
+    const token = createToken(user._id);
+    res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000});
+    res.status(200).json({ user: user._id });
   } catch (err) {
-    console.log(err.message);
-    res.status(404).send(err.message);
+    res.status(400).send(err.message);
   }
 };
 
