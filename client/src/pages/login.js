@@ -8,9 +8,12 @@ export const Login = () => {
 
 
     const [data, SetData] = useState({
-        password: null,
-        email: null,
+        password: "",
+        email: "",
     });
+
+    const [error, setError] = useState({})
+
 
     const Submit = (e) => {
         e.preventDefault();
@@ -25,7 +28,8 @@ export const Login = () => {
                 navigate('/', { replace: true });
             })
             .catch((err) => {
-                console.log(err.response.data.errors);
+                setError(err.response.data.errors);
+                console.log(err.response.data.errors)
             });
     };
 
@@ -42,6 +46,7 @@ export const Login = () => {
                 placeholder='e-mail'
                 onChange={newValue}
             />
+            {error.email}
             <input
                 type='password'
                 autoComplete='true'
@@ -49,6 +54,7 @@ export const Login = () => {
                 name='password'
                 onChange={newValue}
             />
+            {error.password}
             <button type='submit'>Login</button>
         </form>
     )

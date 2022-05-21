@@ -7,12 +7,12 @@ const handleErrors = (err) => {
   let errors = { email: '', password: '' };
 
   // incorrect email
-  if (err.message === 'incorrect email') {
+  if (err.message === 'Incorrect email') {
     errors.email = 'That email is not registered';
   }
 
   // incorrect password
-  if (err.message === 'incorrect password') {
+  if (err.message === 'Incorrect password') {
     errors.password = 'That password is incorrect';
   }
 
@@ -43,6 +43,8 @@ const createToken = (id) => {
 module.exports.login_Post = async (req, res) => {
   const email = req.body.Email
   const password = req.body.Password
+
+  console.log(password)
 
   try {
     const user = await User.login(email, password);

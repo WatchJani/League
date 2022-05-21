@@ -8,10 +8,10 @@ export const Register = () => {
     let navigate = useNavigate();
 
     const [data, SetData] = useState({
-        username: null,
-        password: null,
-        email: null,
-        phone: null,
+        username: "",
+        password: "",
+        email: "",
+        phone: "",
     });
 
 
