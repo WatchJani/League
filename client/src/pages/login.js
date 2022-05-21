@@ -22,10 +22,10 @@ export const Login = () => {
             })
             .then((res) => {
                 console.log(res);
-                navigate('/home', { replace: true });
+                navigate('/', { replace: true });
             })
             .catch((err) => {
-                console.log(err.response.data);
+                console.log(err.response.data.errors);
             });
     };
 

@@ -14,6 +14,10 @@ export const Register = () => {
         phone: null,
     });
 
+
+    const [error, setError] = useState({})
+
+
     const Submit = (e) => {
         e.preventDefault();
 
@@ -29,7 +33,7 @@ export const Register = () => {
                 navigate('/login', { replace: true });
             })
             .catch((err) => {
-                console.log(err.response.data);
+                setError(err.response.data.errors);
             });
     };
 
@@ -45,6 +49,7 @@ export const Register = () => {
                 name='username'
                 onChange={newValue}
             />
+            {error.username}
             <input
                 type='password'
                 autoComplete='true'
@@ -52,6 +57,7 @@ export const Register = () => {
                 name='password'
                 onChange={newValue}
             />
+            {error.password}
             <input
                 type='text'
                 autoComplete='true'
@@ -59,6 +65,7 @@ export const Register = () => {
                 placeholder='e-mail'
                 onChange={newValue}
             />
+            {error.email}
             <input type='text' name='phone' placeholder='phone' onChange={newValue} />
             <button type='submit'>Register</button>
         </form>

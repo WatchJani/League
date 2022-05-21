@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        require: [true, "Please enter an password"],
+        required: [true, "Please enter an password"],
         minlength: [6, "Minimum username lenght is 6 characters"],
     },
     activation_hash: {
@@ -20,6 +20,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please enter an email"],
         lowercase: true,
+        unique: true,
         validate: [validator.isEmail, 'Unesite validan email!'],
     },
     phone: {
@@ -32,6 +33,8 @@ const userSchema = new mongoose.Schema({
         type: String
     }
 })
+
+
 
 userSchema.pre("save", async function (next) {
     const salt = await bcrypt.genSalt()
