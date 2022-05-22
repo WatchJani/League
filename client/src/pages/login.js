@@ -1,6 +1,6 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from '../utils/axiosBackend';
 
 export const Login = () => {
   let navigate = useNavigate();
@@ -16,7 +16,7 @@ export const Login = () => {
     e.preventDefault();
 
     axios
-      .post('http://localhost:5000/login', {
+      .post('/login', {
         Email: data.email,
         Password: data.password,
       })
@@ -25,6 +25,7 @@ export const Login = () => {
         navigate('/', { replace: true });
       })
       .catch((err) => {
+        console.log(err);
         setError(err.response.data.errors);
         console.log(err.response.data.errors);
       });

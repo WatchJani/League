@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import axios from '../utils/axiosBackend';
 import { useNavigate } from 'react-router-dom';
 
 axios.defaults.withCredentials = true;
@@ -20,7 +20,7 @@ export const Register = () => {
     e.preventDefault();
 
     axios
-      .post('http://localhost:5000/register', {
+      .post('/register', {
         Username: data.username,
         Password: data.password,
         Email: data.email,

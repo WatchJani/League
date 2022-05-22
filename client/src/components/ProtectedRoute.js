@@ -1,13 +1,24 @@
-import Cookies from 'js-cookie';
-import { Navigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import authHeader from '../utils/auth-header';
+import axios from '../utils/axiosBackend';
+import { useNavigate } from 'react-router-dom';
 
 const ProtectedRoute = ({ children }) => {
-  const cookie = Cookies.get('jwt');
-  if (!cookie) {
-    return <Navigate to='/register' replace />;
-  }
+  const [verified, setVerified] = useState(false);
+  let navigate = useNavigate();
 
-  return children;
+  useEffect(() => {
+    axios
+      .get('/protected', { headers: authHeader() })
+      .then((res) => {
+        if (res?.data?.token) return setVerified(true);
+      })
+      .catch((err) => {
+        navigate('/register', { replace: true });
+      });
+  }, []);
+
+  return verified && children;
 };
 
 export default ProtectedRoute;

@@ -80,3 +80,16 @@ module.exports.register_Post = async (req, res) => {
 module.exports.logout_Get = (req, res) => {
   res.status(202).clearCookie('jwt').json({ message: 'logout' });
 };
+
+module.exports.protected_Get = async (req, res) => {
+  const token = req.headers?.authorization?.startsWith('Bearer')
+    ? req.headers.authorization.split(' ')[1]
+    : '';
+
+  jwt.verify(token, process.env.SECRET_KEY, async function (err, decoded) {
+    const user = await User.findById(decoded?.id);
+
+    if (user) return res.status(200).json({ status: 'success', token });
+    res.status(401).json({ status: 'fail', message: 'Unauthorized' });
+  });
+};

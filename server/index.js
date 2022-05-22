@@ -1,7 +1,7 @@
 const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
-const authRouts = require('./routes/authRouts');
+const authRoutes = require('./routes/authRoutes');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
@@ -16,12 +16,10 @@ mongoose.connect(
   (err) => console.log(err.message)
 );
 
-
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(express.json());
 app.use(cookieParser());
-app.use(authRouts);
-
+app.use('/api/v1/auth', authRoutes);
 
 app.listen(PORT, () => {
   console.log(`server slusa na portu ${PORT}`);
