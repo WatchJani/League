@@ -43,13 +43,12 @@ module.exports.login_Post = async (req, res) => {
   const email = req.body.Email;
   const password = req.body.Password;
 
-  console.log(password);
 
   try {
     const user = await User.login(email, password);
     const token = createToken(user._id);
     res.cookie('jwt', token, { maxAge: maxAge * 1000 });
-    res.status(200).json({ token });
+    res.status(200).json({ user: user._id });
   } catch (err) {
     const errors = handleErrors(err);
     res.status(400).json({ errors });
@@ -70,7 +69,7 @@ module.exports.register_Post = async (req, res) => {
       sameSite: 'strict',
       path: '/',
     });
-    res.status(201).json({ token });
+    res.status(201).json({ user: user._id });
   } catch (err) {
     const errors = handleErrors(err);
     res.status(400).json({ errors });
