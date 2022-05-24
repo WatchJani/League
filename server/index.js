@@ -15,7 +15,7 @@ const db = process.env.DATABASE.replace(
 mongoose.connect(
   db,
   () => {
-    console.log('connected');
+    console.log('Connected');
   },
   (err) => console.log(err.message)
 );
@@ -26,7 +26,7 @@ app.use(cookieParser());
 app.use('/auth', authRoutes);
 
 app.listen(PORT, () => {
-  console.log(`server slusa na portu ${PORT}`);
+  console.log(`Server listening on port ${PORT}`);
 });
 
 process.on('unhandledRejection', (err) => {
