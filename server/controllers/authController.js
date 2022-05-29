@@ -1,6 +1,6 @@
 const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
-
+const multer = require('multer');
 const handleErrors = (err) => {
   console.log(err.message);
   let errors = { email: '', password: '' };
@@ -54,16 +54,21 @@ module.exports.login_Post = async (req, res) => {
   }
 };
 
-//commet
-
 module.exports.register_Post = async (req, res) => {
-  const username = req.body.Username;
-  const password = req.body.Password;
-  const email = req.body.Email;
-  const phone = req.body.Phone;
+  const { firstName, lastName, password, email, phone } = req.body;
+  console.log(req.file);
+  const image = req.file?.filename;
 
   try {
-    const user = await User.create({ username, password, email, phone });
+    const user = await User.create({
+      firstName,
+      lastName,
+      password,
+      email,
+      phone,
+      image,
+    });
+
     const token = createToken(user._id);
     res.cookie('jwt', token, {
       maxAge: maxAge * 1000,

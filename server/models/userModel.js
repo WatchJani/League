@@ -3,16 +3,22 @@ const bcrypt = require('bcrypt');
 const validator = require('validator');
 
 const userSchema = new mongoose.Schema({
-  username: {
+  firstName: {
     type: String,
-    required: [true, 'Please enter an username'],
-    minlength: [6, 'Minimum username lenght is 6 characters'],
+    required: [true, 'Please enter your first name'],
+    minlength: [2, 'Minimum first name length is 2 characters'],
+    trim: true,
+  },
+  lastName: {
+    type: String,
+    required: [true, 'Please enter your last name'],
+    minlength: [2, 'Minimum last name length is 2 characters'],
     trim: true,
   },
   password: {
     type: String,
     required: [true, 'Please enter an password'],
-    minlength: [6, 'Minimum username lenght is 6 characters'],
+    minlength: [6, 'Minimum password length is 6 characters'],
     trim: true,
   },
   activation_hash: {
@@ -32,9 +38,8 @@ const userSchema = new mongoose.Schema({
   role: {
     type: String,
   },
-  logo: {
-    type: String,
-  },
+  image: String,
+  address: String,
 });
 
 userSchema.pre('save', async function (next) {
