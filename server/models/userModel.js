@@ -40,7 +40,10 @@ const userSchema = new mongoose.Schema({
     enum: ['SuperAdmin', 'TeamAdmin', 'LeagueAdmin', 'Delegate'],
     default: 'TeamAdmin',
   },
-  image: String,
+  image: {
+    type: String,
+    default: 'avatar.svg',
+  },
   address: String,
 });
 

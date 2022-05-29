@@ -1,6 +1,5 @@
 const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
-const multer = require('multer');
 const handleErrors = (err) => {
   console.log(err.message);
   let errors = { email: '', password: '' };
