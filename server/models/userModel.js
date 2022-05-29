@@ -37,6 +37,8 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
+    enum: ['SuperAdmin', 'TeamAdmin', 'LeagueAdmin', 'Delegate'],
+    default: 'TeamAdmin',
   },
   image: String,
   address: String,
