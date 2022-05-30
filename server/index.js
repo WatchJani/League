@@ -33,7 +33,6 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/api/v1/users', authRoutes);
 app.all('*', (req, res, next) => {
-  console.log('aaa');
   next(new AppError(`Route ${req.originalUrl} is not defined!`, 404));
 });
 
