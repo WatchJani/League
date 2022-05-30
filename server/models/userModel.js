@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const validator = require('validator');
+const AppError = require('../utils/appError');
 
 const userSchema = new mongoose.Schema({
   firstName: {
@@ -22,15 +23,13 @@ const userSchema = new mongoose.Schema({
     trim: true,
     select: false,
   },
-  activation_hash: {
-    type: String,
-  },
+  activation_hash: String,
   email: {
     type: String,
     required: [true, 'Please enter an email'],
     lowercase: true,
     unique: true,
-    validate: [validator.isEmail, 'Unesite validan email!'],
+    validate: [validator.isEmail, 'Enter valid email!'],
     trim: true,
   },
   phone: {
@@ -43,7 +42,7 @@ const userSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    default: 'avatar.svg',
+    default: 'public/avatar.svg',
   },
   address: String,
 });
@@ -54,16 +53,15 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-userSchema.statics.login = async function (email, password) {
+userSchema.statics.login = async function (email, password, next) {
   const user = await this.findOne({ email });
   if (user) {
     const auth = await bcrypt.compare(password, user.password); //password
-    if (auth) {
-      return user;
-    }
-    throw Error('Incorrect password');
+    if (auth) return user;
+
+    new AppError('Incorrect password', 401);
   }
-  throw Error('Incorrect email');
+  new AppError('Incorrect email', 401);
 };
 
 const User = mongoose.model('User', userSchema);
