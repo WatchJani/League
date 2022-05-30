@@ -14,7 +14,7 @@ const ProtectedRoute = ({ children }) => {
         if (res?.data?.token) return setVerified(true);
       })
       .catch((err) => {
-        navigate('/register', { replace: true });
+        navigate('/', { replace: true });
       });
   }, [navigate]);
 

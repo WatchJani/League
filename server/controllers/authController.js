@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
-const maxAge = 3 * 24 * 60 * 60;
+const maxAge = process.env.ACTIVE_DAYS * 24 * 60 * 60;
 
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
