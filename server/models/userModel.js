@@ -3,28 +3,27 @@ const bcrypt = require('bcrypt');
 const validator = require('validator');
 const AppError = require('../utils/appError');
 
-
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, 'Please enter your first name'],
+    // required: [true, 'Please enter your first name'],
     minlength: [2, 'Minimum first name length is 2 characters'],
     trim: true,
   },
   lastName: {
     type: String,
-    required: [true, 'Please enter your last name'],
+    // required: [true, 'Please enter your last name'],
     minlength: [2, 'Minimum last name length is 2 characters'],
     trim: true,
   },
   password: {
     type: String,
-    required: [true, 'Please enter an password'],
+    // required: [true, 'Please enter an password'],
     minlength: [6, 'Minimum password length is 6 characters'],
     trim: true,
     select: false,
   },
-  activation_hash: String,
+  activation_hash: { type: Boolean, default: false },
   email: {
     type: String,
     required: [true, 'Please enter an email'],
@@ -43,14 +42,15 @@ const userSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    default: 'public/avatar.svg',
+    default:
+      'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?20170328184010',
   },
   address: String,
 });
 
 userSchema.pre('save', async function (next) {
   const salt = await bcrypt.genSalt();
-  this.password = await bcrypt.hash(this.password, salt); //password
+  if (this.password) this.password = await bcrypt.hash(this.password, salt); //password
   next();
 });
 

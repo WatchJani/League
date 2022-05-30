@@ -21,10 +21,9 @@ module.exports.login_Post = catchAsync(async (req, res, next) => {
   res.status(200).json({ status: 'success', data: user._id });
 });
 
-module.exports.register_Post = catchAsync(async (req, res, next) => {
-  const image = req.file?.path;
-
-  const user = await User.create({ ...req.body, image });
+module.exports.createPendingUser_Post = catchAsync(async (req, res, next) => {
+  const email = req.body.email;
+  const user = await User.create({ email });
 
   const token = createToken(user._id);
   res.cookie('jwt', token, {
@@ -32,7 +31,27 @@ module.exports.register_Post = catchAsync(async (req, res, next) => {
     sameSite: 'strict',
     path: '/',
   });
-  res.status(201).json({ status: 'success', data: token });
+  res.status(201).json({ status: 'success', data: { token, email } });
+});
+
+module.exports.register_Post = catchAsync(async (req, res, next) => {
+  const { password, name, lastName } = req.body;
+
+  if (!password || !name || !lastName)
+    return next(new AppError('Fields: password, name, lastName are required!'));
+
+  const user = await User.findOne({ _id: req.params.id }).select('+password');
+  if (user.activation_hash)
+    return next(new AppError('You are already registrered!'));
+
+  user.activation_hash = true;
+  user.name = name;
+  user.lastName = lastName;
+  user.password = password;
+
+  await user.save();
+
+  res.status(201).json({ status: 'success', data: { user } });
 });
 
 module.exports.logout_Get = (req, res, next) => {
