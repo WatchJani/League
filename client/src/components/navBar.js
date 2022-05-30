@@ -24,8 +24,8 @@ export const Navbar = () => {
 
     return (
         <>
-            <IconButton aria-label="delete" size="large">
-                <LogoutIcon onClick={logOut} />
+            <IconButton onClick={logOut} aria-label="delete" size="large">
+                <LogoutIcon />
             </IconButton>
         </>
     )
