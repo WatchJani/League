@@ -4,7 +4,7 @@ const validator = require('validator');
 const AppError = require('../utils/appError');
 
 const userSchema = new mongoose.Schema({
-  firstName: {
+  name: {
     type: String,
     required: [true, 'Please enter your first name'],
     minlength: [2, 'Minimum first name length is 2 characters'],

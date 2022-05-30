@@ -9,7 +9,7 @@ import axios from '../utils/axiosBackend';
 
 export const Home = () => {
   const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
+    { field: '_id', headerName: 'ID', width: 70 },
     {
       field: 'image',
       headerName: 'Avatar',
@@ -80,6 +80,7 @@ export const Home = () => {
     axios
       .get('/')
       .then((res) => {
+        console.log(res.data.data);
         getRows(res.data.data);
       })
       .catch((err) => {
