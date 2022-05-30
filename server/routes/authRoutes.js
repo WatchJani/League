@@ -17,6 +17,8 @@ const upload = multer({
   storage: Storage,
 });
 
+router.get('/', userController.getAllUsers);
+
 router
   .route('/:id')
   .get(userController.getUser)
