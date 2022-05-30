@@ -34,37 +34,9 @@ exports.updateOne = (Model) =>
 
 exports.createOne = (Model) =>
   catchAsync(async (req, res, next) => {
-    const {
-      name,
-      lastName,
-      password,
-      email,
-      phone,
-      address,
-      role,
-      weight,
-      height,
-      actual,
-      locked,
-      number,
-    } = req.body;
     const image = req.file?.filename;
 
-    const doc = await Model.create({
-      name,
-      lastName,
-      password,
-      email,
-      weight,
-      height,
-      phone,
-      image,
-      address,
-      role,
-      actual,
-      locked,
-      number,
-    });
+    const doc = await Model.create({ ...req.body, image });
 
     res.status(201).json({
       status: 'success',

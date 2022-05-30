@@ -23,7 +23,7 @@ export const Home = () => {
       ),
       width: 100,
     },
-    { field: 'firstName', headerName: 'First name', width: 130 },
+    { field: 'name', headerName: 'Name', width: 130 },
     { field: 'lastName', headerName: 'Last name', width: 130 },
     {
       field: 'email',
@@ -48,7 +48,7 @@ export const Home = () => {
     },
     {
       field: 'role',
-      headerName: 'role',
+      headerName: 'Role',
       description: 'Role svih korisnika na sistemu',
       width: 130,
     },
@@ -79,13 +79,8 @@ export const Home = () => {
   useEffect(() => {
     axios
       .get('/')
-      .then((res) => {
-        console.log(res.data.data);
-        getRows(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      .then((res) => getRows(res.data.data))
+      .catch((err) => console.log(err));
   }, []);
 
   return (

@@ -22,18 +22,9 @@ module.exports.login_Post = catchAsync(async (req, res, next) => {
 });
 
 module.exports.register_Post = catchAsync(async (req, res, next) => {
-  const { name, lastName, password, email, phone, address } = req.body;
-  const image = req.file?.filename;
+  const image = req.file?.path;
 
-  const user = await User.create({
-    name,
-    lastName,
-    password,
-    email,
-    phone,
-    image,
-    address,
-  });
+  const user = await User.create({ ...req.body, image });
 
   const token = createToken(user._id);
   res.cookie('jwt', token, {

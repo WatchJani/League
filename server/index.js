@@ -2,6 +2,7 @@ const express = require('express');
 require('dotenv').config({ path: './local.env' });
 const mongoose = require('mongoose');
 const cors = require('cors');
+const cloudinary = require('cloudinary');
 const cookieParser = require('cookie-parser');
 const AppError = require('./utils/appError');
 const errorController = require('./controllers/errorController');
@@ -13,6 +14,13 @@ const League = require('./models/leagueModel');
 const Season = require('./models/seasonModel');
 
 const app = express();
+
+cloudinary.config({
+  cloud_name: 'leagues',
+  api_key: '373213883494148',
+  api_secret: '0p6fMqXVnuMZoVTnDWtzWI5dtWw',
+});
+
 const PORT = process.env.PORT;
 
 process.on('unhandledRejection', (err) => {
