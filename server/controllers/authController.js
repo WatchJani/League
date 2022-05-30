@@ -41,7 +41,7 @@ module.exports.register_Post = catchAsync(async (req, res, next) => {
     sameSite: 'strict',
     path: '/',
   });
-  res.status(201).json({ status: 'success', data: user._id });
+  res.status(201).json({ status: 'success', data: token });
 });
 
 module.exports.logout_Get = (req, res, next) => {
