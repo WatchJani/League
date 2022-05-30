@@ -15,6 +15,7 @@ module.exports.login_Post = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 
   const user = await User.login(email, password, next);
+  console.log(user);
   const token = createToken(user._id);
   res.cookie('jwt', token, { maxAge: maxAge * 1000 });
   res.status(200).json({ status: 'success', data: user._id });
