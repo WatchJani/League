@@ -22,7 +22,7 @@ export const Login = () => {
       })
       .then((res) => {
         console.log(res);
-        navigate('/', { replace: true });
+        navigate('/home', { replace: true });
       })
       .catch((err) => {
         console.log(err);

@@ -1,7 +1,7 @@
 import axios from '../utils/axiosBackend';
 import { useNavigate } from 'react-router-dom';
-import { Navbar } from '../components/navBar';
-import { Link } from 'react-router-dom';
+// import { Navbar } from '../components/navBar';
+// import { Link } from 'react-router-dom';
 
 export const Home = () => {
   let navigate = useNavigate();
@@ -20,9 +20,12 @@ export const Home = () => {
 
   return (
     <>
-      <Navbar />
       <button onClick={logOut}>Logout</button>
-      <Link to='/protected'>protected</Link>
+
+
+
+
+
     </>
   );
 };

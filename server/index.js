@@ -23,7 +23,7 @@ mongoose.connect(
 app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(express.json());
 app.use(cookieParser());
-app.use('/api/v1/users', authRoutes);
+app.use('/auth', authRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);

@@ -30,7 +30,7 @@ const handleErrors = (err) => {
   return errors;
 };
 
-const maxAge = 3 * 24 * 60 * 60;
+const maxAge = process.env.ACTIVE_DAYS * 24 * 60 * 60;
 
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
