@@ -93,6 +93,7 @@ export const Home = () => {
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <div style={{ height: 'calc(100vh - 48px)', width: '1250px' }}>
           <DataGrid
+            getRowId={(row) => row._id}
             rows={rows}
             columns={columns}
             pageSize={12}

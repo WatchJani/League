@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt');
 const validator = require('validator');
 const AppError = require('../utils/appError');
 
-const opts = { toJSON: { virtuals: true } };
 
 const userSchema = new mongoose.Schema({
   firstName: {
@@ -47,7 +46,7 @@ const userSchema = new mongoose.Schema({
     default: 'public/avatar.svg',
   },
   address: String,
-}, opts);
+});
 
 userSchema.pre('save', async function (next) {
   const salt = await bcrypt.genSalt();
