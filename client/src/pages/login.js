@@ -17,8 +17,8 @@ export const Login = () => {
 
     axios
       .post('/login', {
-        Email: data.email,
-        Password: data.password,
+        email: data.email,
+        password: data.password,
       })
       .then((res) => {
         console.log(res);
