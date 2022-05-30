@@ -13,7 +13,8 @@ const leagueSchema = new mongoose.Schema({
         minlength: [2, 'Minimum first name length is 2 characters'],
     },
     logo: {
-        type: String
+        type: String,
+        default: 'avatar.svg',
     }
 });
 

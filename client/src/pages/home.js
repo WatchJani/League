@@ -9,54 +9,14 @@ export const Home = () => {
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
-    {
-      field: 'image',
-      headerName: 'Avatar',
-      editable: true,
-      sortable: false,
-      renderCell: (params) => <img style={{ borderRadius: "50%", width: 40, height: 40 }} src={params.value} />, // renderCell will render the component
-      width: 100
-    },
+    { field: 'image', headerName: 'Avatar', editable: true, sortable: false, renderCell: (params) => <img style={{ borderRadius: "50%", width: 40, height: 40 }} src={params.value} />, width: 100 },
     { field: 'firstName', headerName: 'First name', width: 130 },
     { field: 'lastName', headerName: 'Last name', width: 130 },
-    {
-      field: 'email',
-      headerName: 'E-mail',
-      description: 'Mejlovi korisnika',
-      sortable: false,
-      width: 220,
-
-    },
-    {
-      field: 'phone',
-      headerName: 'Phone',
-      description: 'Mejlovi korisnika',
-      sortable: false,
-      width: 120,
-
-    },
-    {
-      field: 'adress',
-      headerName: 'Adress',
-      description: 'Mejlovi korisnika',
-      sortable: false,
-      width: 160,
-
-    },
-    {
-      field: 'role',
-      headerName: 'role',
-      description: 'Role svih korisnika na sistemu',
-      width: 130,
-
-    },
-    {
-      field: 'edit',
-      headerName: 'Edit',
-      sortable: false,
-      renderCell: (params) => <><IconButton aria-label="delete" style={{ color: "rgb(212, 0, 0)" }} size="large"><DeleteIcon /></IconButton><IconButton aria-label="delete" color="primary" size="large"><EditIcon /></IconButton></>,
-      width: 105
-    },
+    { field: 'email', headerName: 'E-mail', description: 'Mejlovi korisnika', sortable: false, width: 220 },
+    { field: 'phone', headerName: 'Phone', description: 'Mejlovi korisnika', sortable: false, width: 120 },
+    { field: 'adress', headerName: 'Adress', description: 'Mejlovi korisnika', sortable: false, width: 160 },
+    { field: 'role', headerName: 'role', description: 'Role svih korisnika na sistemu', width: 130 },
+    { field: 'edit', headerName: 'Edit', sortable: false, renderCell: (params) => <><IconButton aria-label="delete" style={{ color: "rgb(212, 0, 0)" }} size="large"><DeleteIcon /></IconButton><IconButton aria-label="delete" color="primary" size="large"><EditIcon /></IconButton></>, width: 105 },
   ];
 
   const rows = [

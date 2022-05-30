@@ -24,7 +24,8 @@ const playerSchema = new mongoose.Schema({
         min: [30, 'The minimum weight you can enter is 30']
     },
     image: {
-        type: String
+        type: String,
+        default: 'avatar.svg',
     }
 });
 

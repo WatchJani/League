@@ -5,7 +5,7 @@ const multer = require('multer');
 const router = Router();
 
 const Storage = multer.diskStorage({
-  destination: 'images',
+  destination: 'uploads',
   filename: (req, file, cb) => {
     cb(null, Date.now() + file?.originalname);
   },
