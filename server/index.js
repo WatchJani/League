@@ -16,9 +16,9 @@ const Season = require('./models/seasonModel');
 const app = express();
 
 cloudinary.config({
-  cloud_name: 'leagues',
-  api_key: '373213883494148',
-  api_secret: '0p6fMqXVnuMZoVTnDWtzWI5dtWw',
+  cloud_name: process.env.cloud_name,
+  api_key: process.env.cloud_api_key,
+  api_secret: process.env.cloud_api_secret,
 });
 
 const PORT = process.env.PORT;
