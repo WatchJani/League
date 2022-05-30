@@ -25,7 +25,7 @@ export const Home = () => {
       description: 'Mejlovi korisnika',
       sortable: false,
       width: 220,
-   
+
     },
     {
       field: 'phone',
@@ -33,7 +33,7 @@ export const Home = () => {
       description: 'Mejlovi korisnika',
       sortable: false,
       width: 120,
-      
+
     },
     {
       field: 'adress',
@@ -41,14 +41,14 @@ export const Home = () => {
       description: 'Mejlovi korisnika',
       sortable: false,
       width: 160,
-      
+
     },
     {
       field: 'role',
       headerName: 'role',
       description: 'Role svih korisnika na sistemu',
       width: 130,
-     
+
     },
     {
       field: 'edit',
@@ -60,21 +60,21 @@ export const Home = () => {
   ];
 
   const rows = [
-    { id: 1, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com",  phone: "066-311/063", adress: "Cara Lazara 654", role: "Super Admin" },
-    { id: 2, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654" , role: "Super Admin" },
-    { id: 3, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654" , role: "Super Admin" },
-    { id: 4, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com",  phone: "066-311/063", adress: "Cara Lazara 654", role: "Super Admin" },
-    { id: 5, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654" , role: "Super Admin" },
-    { id: 6, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654" , role: "Super Admin" },
-    { id: 7, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com",  phone: "066-311/063", adress: "Cara Lazara 654", role: "Super Admin" },
-    { id: 8, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654" , role: "Super Admin" },
-    { id: 9, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654" , role: "Super Admin" },
-    { id: 10, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com",  phone: "066-311/063", adress: "Cara Lazara 654", role: "Super Admin" },
-    { id: 11, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654" , role: "Super Admin" },
-    { id: 12, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654" , role: "Super Admin" },
-    { id: 13, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com",  phone: "066-311/063", adress: "Cara Lazara 654", role: "Super Admin" },
-    { id: 14, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654" , role: "Super Admin" },
-    { id: 15, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654" , role: "Super Admin" },
+    { id: 1, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654", role: "SuperAdmin" },
+    { id: 2, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654", role: "SuperAdmin" },
+    { id: 3, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654", role: "SuperAdmin" },
+    { id: 4, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654", role: "SuperAdmin" },
+    { id: 5, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654", role: "TeamAdmin" },
+    { id: 6, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654", role: "TeamAdmin" },
+    { id: 7, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654", role: "TeamAdmin" },
+    { id: 8, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654", role: "TeamAdmin" },
+    { id: 9, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654", role: "TeamAdmin" },
+    { id: 10, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654", role: "LeagueAdmin" },
+    { id: 11, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654", role: "LeagueAdmin" },
+    { id: 12, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654", role: "LeagueAdmin" },
+    { id: 13, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654", role: "LeagueAdmin" },
+    { id: 14, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654", role: "Delegate" },
+    { id: 15, image: 'https://forums.crackberry.com/attachments/blackberry-q10-f272/171886d1371181552t-bbm-display-picture-limitations-423341110329_qy737vid_l.jpg', lastName: 'Kondić', firstName: 'Janko', email: "jankokondic84@gmail.com", phone: "066-311/063", adress: "Cara Lazara 654", role: "Delegate" },
   ];
 
 
