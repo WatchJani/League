@@ -9,20 +9,20 @@ import axios from '../utils/axiosBackend';
 
 export const Home = () => {
   const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    // {
-    //   field: 'image',
-    //   headerName: 'Avatar',
-    //   editable: true,
-    //   sortable: false,
-    //   renderCell: (params) => (
-    //     <img
-    //       style={{ borderRadius: '50%', width: 40, height: 40 }}
-    //       src={params.value}
-    //     />
-    //   ),
-    //   width: 100,
-    // },
+    { field: '_id', headerName: 'ID', width: 70 },
+    {
+      field: 'image',
+      headerName: 'Avatar',
+      editable: true,
+      sortable: false,
+      renderCell: (params) => (
+        <img
+          style={{ borderRadius: '50%', width: 40, height: 40 }}
+          src={params.value}
+        />
+      ),
+      width: 100,
+    },
     { field: 'firstName', headerName: 'First name', width: 130 },
     { field: 'lastName', headerName: 'Last name', width: 130 },
     {
@@ -80,7 +80,7 @@ export const Home = () => {
     axios
       .get('/')
       .then((res) => {
-        console.log(res.data.data)
+        console.log(res.data.data);
         getRows(res.data.data);
       })
       .catch((err) => {

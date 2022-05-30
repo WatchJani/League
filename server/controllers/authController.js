@@ -22,11 +22,11 @@ module.exports.login_Post = catchAsync(async (req, res, next) => {
 });
 
 module.exports.register_Post = catchAsync(async (req, res, next) => {
-  const { firstName, lastName, password, email, phone, address } = req.body;
+  const { name, lastName, password, email, phone, address } = req.body;
   const image = req.file?.filename;
 
   const user = await User.create({
-    firstName,
+    name,
     lastName,
     password,
     email,
