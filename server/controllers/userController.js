@@ -21,6 +21,7 @@ module.exports.updateUser = catchAsync(async (req, res, next) => {
 });
 
 module.exports.deleteUser = catchAsync(async (req, res, next) => {
-  await Tour.findByIdAndDelete(req.params.id);
+  const user = await User.findByIdAndDelete(req.params.id);
+  console.log(user);
   res.status(204).json({ status: 'success', data: null });
 });
