@@ -1,6 +1,14 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from '../utils/axiosBackend';
+import styled from 'styled-components';
+
+const Input= styled.input`
+  background-color: #fff;
+  text-align: center;
+  padding: 1rem;
+  width: 350px;
+`
 
 export const Login = () => {
   let navigate = useNavigate();
@@ -37,7 +45,7 @@ export const Login = () => {
 
   return (
     <form onSubmit={Submit}>
-      <input
+      <Input
         type='text'
         autoComplete='true'
         name='email'
@@ -45,7 +53,7 @@ export const Login = () => {
         onChange={newValue}
       />
       {error.email}
-      <input
+      <Input
         type='password'
         autoComplete='true'
         placeholder='password'
