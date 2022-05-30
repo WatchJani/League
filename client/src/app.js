@@ -3,6 +3,7 @@ import { Login } from './pages/login';
 import { Register } from './pages/register';
 import { Page404 } from './pages/page404';
 import { Home } from './pages/home';
+import { Navbar } from './components/navBar';
 // import { ProtectedPage } from './pages/protectedPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
@@ -18,6 +19,7 @@ export const App = () => {
           path='/home'
           element={
             <ProtectedRoute>
+              <Navbar />
               <Home />
             </ProtectedRoute>
           }
