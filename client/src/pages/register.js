@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 axios.defaults.withCredentials = true;
 
-export const Register = () => {
+export const Register = (props) => {
   let navigate = useNavigate();
 
   const [data, SetData] = useState({
@@ -38,31 +38,32 @@ export const Register = () => {
   const newValue = (e) => {
     SetData({ ...data, [e.target.name]: e.target.value });
   };
-
+  // console.log(props)
   return (
     <form onSubmit={Submit}>
-      <input
+      { (typeof props.username !== 'undefined')?(<input
         type='text'
         placeholder='username'
         name='username'
         onChange={newValue}
-      />
+      />):''} 
       {error.username}
-      <input
+      {(typeof props.password !== 'undefined')?(<input
         type='password'
         autoComplete='true'
         placeholder='password'
         name='password'
         onChange={newValue}
-      />
+      />):''}
       {error.password}
-      <input
+      
+      {(typeof props.email !== 'undefined')?(<input
         type='text'
         autoComplete='true'
         name='email'
         placeholder='e-mail'
         onChange={newValue}
-      />
+      />):''}
       {error.email}
       <input type='text' name='phone' placeholder='phone' onChange={newValue} />
       <button type='submit'>Register</button>
