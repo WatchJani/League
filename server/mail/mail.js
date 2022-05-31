@@ -35,8 +35,9 @@ module.exports.sendConfirmationEmail = (email, confirmationCode) => {
         subject: "Please confirm your account",
         template: 'email',
         context: {
-            name: name, // replace {{name}} with Adebola
-            confirmationCode: confirmationCode // replace {{company}} with My Company
+            //definisati promjenjive koje ce se koristiti u HTML tamlatu
+            name: name,
+            confirmationCode: confirmationCode
         }
     }).catch(err => console.log(err));
 };
