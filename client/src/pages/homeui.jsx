@@ -33,10 +33,11 @@ export const HomeUI = ({ rows, columns }) => {
                         aria-label='delete'
                         style={{ color: 'rgb(212, 0, 0)' }}
                         size='large'
+                        onClick={() => { OpenModal(params.id) }}
                     >
                         <DeleteIcon />
                     </IconButton>
-                    <IconButton aria-label='delete' color='primary' size='large'>
+                    <IconButton aria-label='delete' color='primary' size='large' onClick={() => { navigate('edit') }}>
                         <EditIcon />
                     </IconButton>
                 </>
@@ -45,12 +46,21 @@ export const HomeUI = ({ rows, columns }) => {
         },
     ];
 
+    const OpenModal = (id) => document.getElementById("modal").showModal()
+    const CloseModal = () => document.getElementById("modal").close()
 
 
     return (
         <>
+            <dialog id='modal'>
+                <p>Are you sure you want to delete the user from the system?</p>
+                <button>yes</button>
+                <button onClick={() => { CloseModal() }}>no</button>
+            </dialog>
+
+
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <Button variant="contained" onClick={() => { navigate('/add') }}>
+                <Button variant="contained" onClick={() => { navigate('add') }}>
                     ADD
                 </Button>
                 <div style={{ height: 'calc(100vh - 48px)', width: '1250px' }}>
@@ -60,10 +70,10 @@ export const HomeUI = ({ rows, columns }) => {
                         columns={deffaultColumns.concat(columns)}
                         pageSize={12}
                         rowsPerPageOptions={[12]}
-                        checkboxSelection
+                    // checkboxSelection
                     />
                 </div>
             </div>
         </>
     )
-} 
+}
