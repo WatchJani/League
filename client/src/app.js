@@ -18,7 +18,7 @@ export const App = () => {
         {/* <Route path='/' element={<Home />} /> */}
         <Route path='*' element={<Page404 />} />
         <Route index element={<Login />} />
-        <Route path='register' element={<Register />} />
+        <Route path='register/:id' element={<Register />} />
 
         {/* ovaj blok koda dodati u protected route kada bude sve radilo :D */}
         <Route path="/home" element={<Navbar />}>
