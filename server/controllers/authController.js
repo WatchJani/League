@@ -2,6 +2,7 @@ const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
+const nodemailer = require("../mail/mail")
 
 const maxAge = process.env.ACTIVE_DAYS * 24 * 60 * 60;
 
@@ -31,6 +32,9 @@ module.exports.createPendingUser_Post = catchAsync(async (req, res, next) => {
     sameSite: 'strict',
     path: '/',
   });
+
+  nodemailer.sendConfirmationEmail(user.email, user.id)
+
   res.status(201).json({ status: 'success', data: { token, email } });
 });
 
