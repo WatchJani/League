@@ -7,6 +7,8 @@ import { Home } from './pages/home';
 import { Navbar } from './components/navBar';
 // import { ProtectedPage } from './pages/protectedPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import { NewUser } from './pages/newUser';
+
 
 export const App = () => {
   return (
@@ -16,12 +18,14 @@ export const App = () => {
         <Route path='*' element={<Page404 />} />
         <Route path='/' element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/add' element={<NewUser />} />
         <Route
-          path='/home'
+          path='/homee'
           element={
             <ProtectedRoute>
               <Navbar />
-              <Home />
+              {/* <Home /> */}
             </ProtectedRoute>
           }
         />
