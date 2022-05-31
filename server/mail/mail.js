@@ -1,4 +1,6 @@
 const nodemailer = require("nodemailer");
+const hbs = require('nodemailer-express-handlebars')
+const path = require('path')
 
 const transport = nodemailer.createTransport({
     service: "Gmail",
@@ -7,6 +9,19 @@ const transport = nodemailer.createTransport({
         pass: process.env.MAIL_PASSWORD,
     },
 });
+
+// point to the template folder
+const handlebarOptions = {
+    viewEngine: {
+        partialsDir: path.resolve('./mail'),
+        defaultLayout: false,
+    },
+    viewPath: path.resolve('./mail'),
+};
+
+// use a template file with nodemailer
+transport.use('compile', hbs(handlebarOptions))
+
 
 module.exports.sendConfirmationEmail = (email, confirmationCode) => {
     //https://betterprogramming.pub/how-to-create-a-signup-confirmation-email-with-node-js-c2fea602872a
@@ -18,10 +33,10 @@ module.exports.sendConfirmationEmail = (email, confirmationCode) => {
         from: process.env.MAIL_USER,
         to: email,
         subject: "Please confirm your account",
-        html: `<h1>Email Confirmation</h1>
-          <h2>Hello ${name}</h2>
-          <p>Please confirm your email by clicking on the following link</p>
-          <a href=http://localhost:5000/register/${confirmationCode}> http://localhost:5000/register/${confirmationCode}</a>
-          </div>`,
+        template: 'email',
+        context: {
+            name: name, // replace {{name}} with Adebola
+            confirmationCode: confirmationCode // replace {{company}} with My Company
+        }
     }).catch(err => console.log(err));
 };
