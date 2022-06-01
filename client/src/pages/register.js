@@ -7,14 +7,14 @@ axios.defaults.withCredentials = true;
 export const Register = ({ podaci }) => {
   let navigate = useNavigate();
 
+  let sendThisObejctToAxios={};
+    podaci.forEach(prop => {
+      sendThisObejctToAxios[prop.name]=''
+    });
+
   const [data, SetData] = useState(
     // podaci.map(data => data.name) radi ali nema pocetnu vrijednost 
-    {
-      username: "",
-      password: "",
-      email: "",
-      phone: ""
-    }
+    sendThisObejctToAxios
   );
 
   const [error, setError] = useState({});
