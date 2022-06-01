@@ -22,13 +22,19 @@ export const Register = ({ podaci }) => {
   const Submit = (e) => {
     e.preventDefault();
 
+    let sendThisObejctToAxios={};
+    podaci.forEach(prop => {
+      sendThisObejctToAxios[prop.name]=data[prop.name]
+    });
     axios
       .post('/register',
-      // podaci.map(data => data.name: data[data.name])// ne radi nikako
-      // username: data.username,
-      // password: data.password,
-      // email: data.email,
-      // phone: data.phone,
+      // ! saljem obekat ovde;
+      sendThisObejctToAxios
+      //  podaci.map(data => data.name: data[data.name])// ne radi nikako
+      // * username: data.username,
+      // * password: data.password,
+      // * email: data.email,
+      // * phone: data.phone,
     )
       .then((res) => {
         console.log(res);
