@@ -7,13 +7,12 @@ axios.defaults.withCredentials = true;
 export const Register = ({ podaci }) => {
   let navigate = useNavigate();
 
-  let sendThisObejctToAxios={};
-    podaci.forEach(prop => {
-      sendThisObejctToAxios[prop.name]=''
-    });
+  let sendThisObejctToAxios = {};
+  podaci.forEach(prop => {
+    sendThisObejctToAxios[prop.name] = ''
+  });
 
   const [data, SetData] = useState(
-    // podaci.map(data => data.name) radi ali nema pocetnu vrijednost 
     sendThisObejctToAxios
   );
 
@@ -22,20 +21,14 @@ export const Register = ({ podaci }) => {
   const Submit = (e) => {
     e.preventDefault();
 
-    let sendThisObejctToAxios={};
+    let sendThisObejctToAxios = {};
     podaci.forEach(prop => {
-      sendThisObejctToAxios[prop.name]=data[prop.name]
+      sendThisObejctToAxios[prop.name] = data[prop.name]
     });
     axios
       .post('/register',
-      // ! saljem obekat ovde;
-      sendThisObejctToAxios
-      //  podaci.map(data => data.name: data[data.name])// ne radi nikako
-      // * username: data.username,
-      // * password: data.password,
-      // * email: data.email,
-      // * phone: data.phone,
-    )
+        sendThisObejctToAxios
+      )
       .then((res) => {
         console.log(res);
         navigate('/login', { replace: true });
@@ -49,7 +42,7 @@ export const Register = ({ podaci }) => {
     SetData({ ...data, [e.target.name]: e.target.value });
   };
 
-  console.log(data.password)
+  console.log(data)
 
   return (
     <form onSubmit={Submit}>

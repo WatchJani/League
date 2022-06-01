@@ -7,6 +7,7 @@ export const RegisterJs = () => {
             { id: 2, type: "password", name: "password", placeholder: "password" },
             { id: 3, type: "text", name: "email", placeholder: "email" },
             { id: 4, type: "text", name: "phone", placeholder: "phone" },
+            //name se koristi za ime koje ce se primati na serveru 
         ]
         } />
     )
