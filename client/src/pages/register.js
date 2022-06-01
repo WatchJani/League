@@ -41,6 +41,20 @@ export const Register = () => {
 
   return (
     <form onSubmit={Submit}>
+
+      {data.map(() => {
+        return (
+          <>
+            <input
+              type='text'
+              placeholder='username'
+              name='username'
+              onChange={newValue}
+            />
+            <p>{error.username}</p>
+          </>
+        )
+      })}
       <input
         type='text'
         placeholder='username'
@@ -69,3 +83,17 @@ export const Register = () => {
     </form>
   );
 };
+
+
+// {input.map(() => {
+//   return (
+//     <div key={Math.floor(Math.random() * 10000)}>
+//       <input
+//         type={input.type}
+//         name={input.name}
+//         onChange={newValue}
+//       />
+//       {/* <p>{error.input.name}</p> */}
+//     </div>
+//   )
+// })}

@@ -4,6 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 export const HomeUI = ({ rows, columns }) => {
     let navigate = useNavigate();
@@ -37,7 +38,7 @@ export const HomeUI = ({ rows, columns }) => {
                     >
                         <DeleteIcon />
                     </IconButton>
-                    <IconButton aria-label='delete' color='primary' size='large' onClick={() => { navigate('edit') }}>
+                    <IconButton aria-label='delete' color='primary' size='large' onClick={() => { navigate(`edit/${params.id}`) }}>
                         <EditIcon />
                     </IconButton>
                 </>
@@ -45,8 +46,20 @@ export const HomeUI = ({ rows, columns }) => {
             width: 105,
         },
     ];
+    let button = document.createElement("button");
+    button.innerHTML = "yes";
 
-    const OpenModal = (id) => document.getElementById("modal").showModal()
+    let body = document.getElementById("modal");
+
+
+    const OpenModal = (id) => {
+        document.getElementById("modal").showModal()
+
+        body.appendChild(button);
+        button.addEventListener("click", () => {
+            console.log("izbrisi ", id)
+        });
+    }
     const CloseModal = () => document.getElementById("modal").close()
 
 
@@ -54,24 +67,25 @@ export const HomeUI = ({ rows, columns }) => {
         <>
             <dialog id='modal'>
                 <p>Are you sure you want to delete the user from the system?</p>
-                <button>yes</button>
                 <button onClick={() => { CloseModal() }}>no</button>
             </dialog>
 
 
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <Button variant="contained" onClick={() => { navigate('add') }}>
-                    ADD
-                </Button>
-                <div style={{ height: 'calc(100vh - 48px)', width: '1250px' }}>
-                    <DataGrid
-                        getRowId={(row) => row._id}
-                        rows={rows}
-                        columns={deffaultColumns.concat(columns)}
-                        pageSize={12}
-                        rowsPerPageOptions={[12]}
-                    // checkboxSelection
-                    />
+                <div style={{ display: 'flex', flexDirection: "column", alignItems: "end" }}>
+                    <Button style={{ width: 200, padding: 15 }} startIcon={<AddCircleIcon />} variant="contained" onClick={() => { navigate('add') }}>
+                        ADD
+                    </Button>
+                    <div style={{ height: 'calc(100vh - 120px)', width: 1210}}>
+                        <DataGrid style={{ overflowX: "auto", padding: 20 }}
+                            getRowId={(row) => row._id}
+                            rows={rows}
+                            columns={deffaultColumns.concat(columns)}
+                            pageSize={12}
+                            rowsPerPageOptions={[12]}
+                        // checkboxSelection
+                        />
+                    </div>
                 </div>
             </div>
         </>

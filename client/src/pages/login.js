@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from '../utils/axiosBackend';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 export const Login = () => {
   let navigate = useNavigate();
@@ -36,24 +38,15 @@ export const Login = () => {
   };
 
   return (
-    <form onSubmit={Submit}>
-      <input
-        type='text'
-        autoComplete='true'
-        name='email'
-        placeholder='e-mail'
-        onChange={newValue}
-      />
-      {error.email}
-      <input
-        type='password'
-        autoComplete='true'
-        placeholder='password'
-        name='password'
-        onChange={newValue}
-      />
-      {error.password}
-      <button type='submit'>Login</button>
-    </form>
+    <div style={{ width: "100%", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <form onSubmit={Submit} style={{ display: "flex", flexDirection: "column", padding: 20 }}>
+        <TextField style={{ marginBottom: 10, width: 400 }} id="outlined-basic" name='email' label="E-mail" variant="outlined" onChange={newValue} />
+        {error.email}
+        <TextField style={{ marginBottom: 10 }} id="outlined-basic" type='password' name='password' label="Password" variant="outlined" onChange={newValue} />
+        {error.password}
+        <Button style={{ padding: 15, marginBottom: 10 }} type='submit' variant="contained" color="primary">Login</Button>
+        <Button style={{ width: 200 }} size="small">Zaboravili ste lozinku?</Button>
+      </form>
+    </div>
   );
 };

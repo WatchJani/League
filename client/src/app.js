@@ -9,6 +9,7 @@ import { Navbar } from './components/navBar';
 import ProtectedRoute from './components/ProtectedRoute';
 import { NewUser } from './pages/newUser';
 import { Edit } from './pages/edit';
+import { RegisterLog } from './pages/registerlog';
 
 
 export const App = () => {
@@ -19,12 +20,13 @@ export const App = () => {
         <Route path='*' element={<Page404 />} />
         <Route index element={<Login />} />
         <Route path='register/:id' element={<Register />} />
+        <Route path='registerlog' element={<RegisterLog />} />
 
         {/* ovaj blok koda dodati u protected route kada bude sve radilo :D */}
         <Route path="/home" element={<Navbar />}>
           <Route index element={<Home />} />
           <Route path='add' element={<NewUser />} />
-          <Route path='edit' element={<Edit />} />
+          <Route path='edit/:id' element={<Edit />} />
         </Route>
 
         <Route
