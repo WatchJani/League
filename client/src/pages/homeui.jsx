@@ -76,7 +76,7 @@ export const HomeUI = ({ rows, columns }) => {
                     <Button style={{ width: 200, padding: 15 }} startIcon={<AddCircleIcon />} variant="contained" onClick={() => { navigate('add') }}>
                         ADD
                     </Button>
-                    <div style={{ height: 'calc(100vh - 120px)', width: 1210}}>
+                    <div style={{ height: 'calc(100vh - 120px)', width: 1210 }}>
                         <DataGrid style={{ overflowX: "auto", padding: 20 }}
                             getRowId={(row) => row._id}
                             rows={rows}

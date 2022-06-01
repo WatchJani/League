@@ -9,7 +9,8 @@ import { Navbar } from './components/navBar';
 import ProtectedRoute from './components/ProtectedRoute';
 import { NewUser } from './pages/newUser';
 import { Edit } from './pages/edit';
-import { RegisterLog } from './pages/registerlog';
+import { RegisterJs } from './pages/registerJs';
+
 
 
 export const App = () => {
@@ -19,8 +20,7 @@ export const App = () => {
         {/* <Route path='/' element={<Home />} /> */}
         <Route path='*' element={<Page404 />} />
         <Route index element={<Login />} />
-        <Route path='register/:id' element={<Register />} />
-        <Route path='registerlog' element={<RegisterLog />} />
+        <Route path='register/:id' element={<RegisterJs />} />
 
         {/* ovaj blok koda dodati u protected route kada bude sve radilo :D */}
         <Route path="/home" element={<Navbar />}>

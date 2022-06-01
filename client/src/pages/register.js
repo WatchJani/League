@@ -4,15 +4,18 @@ import { useNavigate } from 'react-router-dom';
 
 axios.defaults.withCredentials = true;
 
-export const Register = () => {
+export const Register = ({ podaci }) => {
   let navigate = useNavigate();
 
-  const [data, SetData] = useState({
-    username: '',
-    password: '',
-    email: '',
-    phone: '',
-  });
+  const [data, SetData] = useState(
+    // podaci.map(data => data.name) radi ali nema pocetnu vrijednost 
+    {
+      username: "",
+      password: "",
+      email: "",
+      phone: ""
+    }
+  );
 
   const [error, setError] = useState({});
 
@@ -20,12 +23,13 @@ export const Register = () => {
     e.preventDefault();
 
     axios
-      .post('/register', {
-        Username: data.username,
-        Password: data.password,
-        Email: data.email,
-        Phone: data.phone,
-      })
+      .post('/register',
+      // podaci.map(data => data.name: data[data.name])// ne radi nikako
+      // username: data.username,
+      // password: data.password,
+      // email: data.email,
+      // phone: data.phone,
+    )
       .then((res) => {
         console.log(res);
         navigate('/login', { replace: true });
@@ -39,61 +43,25 @@ export const Register = () => {
     SetData({ ...data, [e.target.name]: e.target.value });
   };
 
+  console.log(data.password)
+
   return (
     <form onSubmit={Submit}>
-
-      {data.map(() => {
+      {podaci.map((data) => {
         return (
-          <>
+          <div id={data.id}>
             <input
-              type='text'
-              placeholder='username'
-              name='username'
+              type={data.type}
+              placeholder={data.placeholder || data.name}
+              name={data.name}
               onChange={newValue}
             />
-            <p>{error.username}</p>
-          </>
+            <p>{error[data.name]}</p>
+          </div>
         )
       })}
-      <input
-        type='text'
-        placeholder='username'
-        name='username'
-        onChange={newValue}
-      />
-      {error.username}
-      <input
-        type='password'
-        autoComplete='true'
-        placeholder='password'
-        name='password'
-        onChange={newValue}
-      />
-      {error.password}
-      <input
-        type='text'
-        autoComplete='true'
-        name='email'
-        placeholder='e-mail'
-        onChange={newValue}
-      />
-      {error.email}
-      <input type='text' name='phone' placeholder='phone' onChange={newValue} />
       <button type='submit'>Register</button>
     </form>
   );
 };
 
-
-// {input.map(() => {
-//   return (
-//     <div key={Math.floor(Math.random() * 10000)}>
-//       <input
-//         type={input.type}
-//         name={input.name}
-//         onChange={newValue}
-//       />
-//       {/* <p>{error.input.name}</p> */}
-//     </div>
-//   )
-// })}
