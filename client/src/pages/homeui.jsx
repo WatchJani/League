@@ -8,7 +8,8 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 export const HomeUI = ({ rows, columns }) => {
     let navigate = useNavigate();
-
+    const imgSize = 40;
+    const btnIconColor = 'rgb(212, 0, 0)';
     const deffaultColumns = [
         { field: '_id', headerName: 'ID', width: 70 },
         {
@@ -18,7 +19,7 @@ export const HomeUI = ({ rows, columns }) => {
             sortable: false,
             renderCell: (params) => (
                 <img
-                    style={{ borderRadius: '50%', width: 40, height: 40 }}
+                    style={{ borderRadius: '50%', width: imgSize, height: imgSize }}
                     src={params.value}
                 />
             ),
@@ -32,7 +33,7 @@ export const HomeUI = ({ rows, columns }) => {
                 <>
                     <IconButton
                         aria-label='delete'
-                        style={{ color: 'rgb(212, 0, 0)' }}
+                        style={{ color: btnIconColor }}
                         size='large'
                         onClick={() => { OpenModal(params.id) }}
                     >
@@ -46,19 +47,28 @@ export const HomeUI = ({ rows, columns }) => {
             width: 105,
         },
     ];
-    let button = document.createElement("button");
-    button.innerHTML = "yes";
+    // let button = document.createElement("button");
+    // button.innerHTML = "yes";
 
+    // let button = (
+    //     <button onClick={() => console.log("izbrisi ", id)}>
+    //         yes
+    //     </button>
+    // )
     let body = document.getElementById("modal");
 
-
     const OpenModal = (id) => {
-        document.getElementById("modal").showModal()
-
-        body.appendChild(button);
-        button.addEventListener("click", () => {
-            console.log("izbrisi ", id)
-        });
+        // document.getElementById("modal").showModal()
+        // body.appendChild(button);
+        let button = (
+            <button onClick={() => console.log("izbrisi ", id)}>
+                yes
+            </button>
+        )
+        ReactDOM.render(button, body);
+        // button.addEventListener("click", () => {
+        //     console.log("izbrisi ", id)
+        // });
     }
     const CloseModal = () => document.getElementById("modal").close()
 
