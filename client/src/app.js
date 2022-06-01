@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import { Login } from './pages/login';
-import { Register } from './pages/register';
+import { Register } from './pages/register/register';
 import { Page404 } from './pages/404/page404';
-import { Home } from './pages/home';
+import { Home } from './pages/home/home';
 import { Navbar } from './components/navBar';
 // import { ProtectedPage } from './pages/protectedPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import { NewUser } from './pages/newUser';
 import { Edit } from './pages/edit';
-import { RegisterJs } from './pages/registerJs';
+import { RegisterJs } from './pages/register/registerJs';
 
 
 

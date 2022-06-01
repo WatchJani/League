@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from '../utils/axiosBackend';
+import axios from '../../utils/axiosBackend';
 import { HomeUI } from './homeui';
 
 export const Home = () => {

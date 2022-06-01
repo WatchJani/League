@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from '../utils/axiosBackend';
+import axios from '../../utils/axiosBackend';
 import { useNavigate } from 'react-router-dom';
 
 axios.defaults.withCredentials = true;
