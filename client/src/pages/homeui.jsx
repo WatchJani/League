@@ -50,24 +50,19 @@ export const HomeUI = ({ rows, columns }) => {
     let button = document.createElement("button");
     button.innerHTML = "yes";
 
-    // let button = (
-    //     <button onClick={() => console.log("izbrisi ", id)}>
-    //         yes
-    //     </button>
-    // )
     let body = document.getElementById("modal");
 
     const OpenModal = (id) => {
         document.getElementById("modal").showModal()
         body.appendChild(button);
-        // let button = (
-        //     <button onClick={() => console.log("izbrisi ", id)}>
-        //         yes
-        //     </button>
-        // )
-        // ReactDOM.render(button, body);
         button.addEventListener("click", () => {
             console.log("izbrisi ", id)
+
+
+            //glavni kod za brisanje - axios
+
+
+            CloseModal()
         });
     }
     const CloseModal = () => document.getElementById("modal").close()

@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import { Login } from './pages/login';
 import { Register } from './pages/register';
-import { Page404 } from './pages/page404';
+import { Page404 } from './pages/404/page404';
 import { Home } from './pages/home';
 import { Navbar } from './components/navBar';
 // import { ProtectedPage } from './pages/protectedPage';
