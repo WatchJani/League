@@ -2,12 +2,10 @@ import { useState } from 'react';
 import axios from '../../utils/axiosBackend';
 import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-
 
 axios.defaults.withCredentials = true;
 
-export const Register = ({ podaci, value, navigateToLink, server }) => {
+export const Register = ({ podaci }) => {
   let navigate = useNavigate();
 
   let reactState = {};
@@ -29,12 +27,12 @@ export const Register = ({ podaci, value, navigateToLink, server }) => {
       sendThisObejctToAxios[prop.name] = data[prop.name]
     });
     axios
-      .post(server,
+      .post('/register',
         sendThisObejctToAxios
       )
       .then((res) => {
         console.log(res);
-        navigate(navigateToLink, { replace: true });
+        navigate('/login', { replace: true });
       })
       .catch((err) => {
         setError(err.response.data.errors);
@@ -45,14 +43,14 @@ export const Register = ({ podaci, value, navigateToLink, server }) => {
     SetData({ ...data, [e.target.name]: e.target.value });
   };
 
+  console.log(data)
 
   return (
     <form onSubmit={Submit}>
       {podaci.map((data) => {
         return (
-          <div key={Math.floor(Math.random() * 10000)}>
-            <TextField
-              label={data.label || data.name}
+          <div id={data.id}>
+            <TextField label={data.label || data.name}
               type={data.type}
               placeholder={data.placeholder || data.name}
               name={data.name}
@@ -62,7 +60,7 @@ export const Register = ({ podaci, value, navigateToLink, server }) => {
           </div>
         )
       })}
-      <Button style={{ padding: 15, marginBottom: 10, fontWeight: "bold" }} type='submit' variant="contained" color="primary">{value}</Button>
+      <button type='submit'>Register</button>
     </form>
   );
 };
