@@ -3,7 +3,6 @@ import authHeader from '../utils/auth-header';
 import axios from '../utils/axiosBackend';
 import { useNavigate } from 'react-router-dom';
 
-
 const ProtectedRoute = ({ children }) => {
   const [verified, setVerified] = useState(false);
   let navigate = useNavigate();

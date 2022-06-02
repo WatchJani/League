@@ -65,9 +65,9 @@ exports.getOne = (Model) =>
     });
   });
 
-exports.getAll = (Model) =>
+exports.getAll = (Model, options = {}) =>
   catchAsync(async (req, res, next) => {
-    const query = Model.find({});
+    const query = Model.find(options);
     const doc = await query;
 
     // SEND RESPONSE

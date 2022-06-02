@@ -2,7 +2,7 @@ const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
-const nodemailer = require("../mail/email")
+const nodemailer = require('../mail/email');
 
 const maxAge = process.env.ACTIVE_DAYS * 24 * 60 * 60;
 
@@ -33,18 +33,21 @@ module.exports.createPendingUser_Post = catchAsync(async (req, res, next) => {
     path: '/',
   });
 
-  nodemailer.sendConfirmationEmail(user.email, user.id)
+  nodemailer.sendConfirmationEmail(user.email, user.id);
 
   res.status(201).json({ status: 'success', data: { token, email } });
 });
 
-module.exports.register_Post = catchAsync(async (req, res, next) => {
-  const { password, name, lastName } = req.body;
+module.exports.register_Patch = catchAsync(async (req, res, next) => {
+  const { password, name, lastName, phone, address, role } = req.body;
+  console.log(req.file, req);
+  const image = req.file?.path;
 
   if (!password || !name || !lastName)
     return next(new AppError('Fields: password, name, lastName are required!'));
 
   const user = await User.findOne({ _id: req.params.id }).select('+password');
+  if (!user) return next(new AppError('User with this email does not exist!'));
   if (user.activation_hash)
     return next(new AppError('You are already registrered!'));
 
@@ -52,6 +55,10 @@ module.exports.register_Post = catchAsync(async (req, res, next) => {
   user.name = name;
   user.lastName = lastName;
   user.password = password;
+  user.phone = phone;
+  user.address = address;
+  user.role = role;
+  user.image = image;
 
   await user.save();
 

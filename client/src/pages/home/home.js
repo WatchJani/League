@@ -3,7 +3,6 @@ import axios from '../../utils/axiosBackend';
 import { HomeUI } from './homeui';
 
 export const Home = () => {
-
   const [rows, getRows] = useState([]);
 
   useEffect(() => {
@@ -14,12 +13,21 @@ export const Home = () => {
   }, []);
 
   return (
-    <HomeUI rows={rows} columns={[
-      { field: 'name', headerName: 'Name', width: 130 },
-      { field: 'lastName', headerName: 'Last name', width: 130 },
-      { field: 'email', headerName: 'E-mail', sortable: false, width: 220, },
-      { field: 'phone', headerName: 'Phone', sortable: false, width: 120, },
-      { field: 'address', headerName: 'Address', sortable: false, width: 160, },
-      { field: 'role', headerName: 'Role', width: 130, }]} />
+    <HomeUI
+      rows={rows}
+      columns={[
+        { field: 'name', headerName: 'Name', width: 130 },
+        { field: 'lastName', headerName: 'Last name', width: 130 },
+        { field: 'email', headerName: 'E-mail', sortable: false, width: 220 },
+        { field: 'phone', headerName: 'Phone', sortable: false, width: 120 },
+        {
+          field: 'address',
+          headerName: 'Address',
+          sortable: false,
+          width: 160,
+        },
+        { field: 'role', headerName: 'Role', width: 130 },
+      ]}
+    />
   );
 };
