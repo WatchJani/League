@@ -48,7 +48,7 @@ export const Register = ({ podaci, value, pageNavigate, server }) => {
   console.log(data)
 
   return (
-    <form className={Styled.form} onSubmit={Submit}>
+    <form className={Styled.form} onSubmit={Submit} >
       {podaci.map((data) => {
         return (
           <div key={data.id}>
@@ -66,4 +66,3 @@ export const Register = ({ podaci, value, pageNavigate, server }) => {
     </form>
   );
 };
-

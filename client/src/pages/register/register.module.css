@@ -1,11 +1,21 @@
 .form > div div {
   width: 100%;
 }
-
-
-.form{
-    margin-top: 100px;
+#app {
+  min-height: 100vh;
 }
+.form {
+  display: flex;
+  margin: auto;
+  width: max-content;
+  height: calc(100vh - 54.5px);
+  flex-direction: column;
+  justify-content: center;
+}
+.form > * {
+  max-width: 350px;
+}
+
 
 
 input[type="file"] {
@@ -16,6 +26,6 @@ input[type="file"]::file-selector-button {
   opacity: 0;
 }
 
-.Box{
-    margin-top: 50px;
+.Box {
+  margin-top: 50px;
 }

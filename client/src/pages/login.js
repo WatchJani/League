@@ -39,8 +39,8 @@ export const Login = () => {
 
   return (
     <div style={{ width: "100%", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
-      <form onSubmit={Submit} style={{ display: "flex", flexDirection: "column", padding: 20 }}>
-        <TextField style={{ marginBottom: 10, width: 400 }} id="outlined-basic" name='email' label="E-mail" variant="outlined" onChange={newValue} />
+      <form onSubmit={Submit} style={{ display: "flex", flexDirection: "column" }}>
+        <TextField style={{ marginBottom: 10, width: 350 }} id="outlined-basic" name='email' label="E-mail" variant="outlined" onChange={newValue} />
         {error.email}
         <TextField style={{ marginBottom: 10 }} id="outlined-basic" type='password' name='password' label="Password" variant="outlined" onChange={newValue} />
         {error.password}
