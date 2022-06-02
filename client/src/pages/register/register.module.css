@@ -1,7 +1,21 @@
-form > div div {
+.form > div div {
   width: 100%;
 }
 
+
+.form{
+    margin-top: 100px;
+}
+
+
+input[type="file"] {
+  cursor: pointer;
+}
+
 input[type="file"]::file-selector-button {
-  display: none;
+  opacity: 0;
+}
+
+.Box{
+    margin-top: 50px;
 }
