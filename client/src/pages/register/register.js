@@ -45,13 +45,12 @@ export const Register = ({ podaci, value, navigateToLink, server }) => {
     SetData({ ...data, [e.target.name]: e.target.value });
   };
 
-  console.log(data)
 
   return (
     <form onSubmit={Submit}>
       {podaci.map((data) => {
         return (
-          <div id={data.id}>
+          <div key={Math.floor(Math.random() * 10000)}>
             <TextField
               label={data.label || data.name}
               type={data.type}
