@@ -1,0 +1,7 @@
+form > div div {
+  width: 100%;
+}
+
+input[type="file"]::file-selector-button {
+  display: none;
+}

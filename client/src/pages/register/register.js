@@ -2,10 +2,12 @@ import { useState } from 'react';
 import axios from '../../utils/axiosBackend';
 import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
+import Styled from "./register.module.css"
+import Button from '@mui/material/Button';
 
 axios.defaults.withCredentials = true;
 
-export const Register = ({ podaci }) => {
+export const Register = ({ podaci, value, pageNavigate, server }) => {
   let navigate = useNavigate();
 
   let reactState = {};
@@ -27,12 +29,12 @@ export const Register = ({ podaci }) => {
       sendThisObejctToAxios[prop.name] = data[prop.name]
     });
     axios
-      .post('/register',
+      .post(server,
         sendThisObejctToAxios
       )
       .then((res) => {
         console.log(res);
-        navigate('/login', { replace: true });
+        navigate(pageNavigate, { replace: true });
       })
       .catch((err) => {
         setError(err.response.data.errors);
@@ -46,10 +48,10 @@ export const Register = ({ podaci }) => {
   console.log(data)
 
   return (
-    <form onSubmit={Submit}>
+    <form className={Styled.form} onSubmit={Submit}>
       {podaci.map((data) => {
         return (
-          <div id={data.id}>
+          <div key={data.id}>
             <TextField label={data.label || data.name}
               type={data.type}
               placeholder={data.placeholder || data.name}
@@ -60,7 +62,7 @@ export const Register = ({ podaci }) => {
           </div>
         )
       })}
-      <button type='submit'>Register</button>
+      <Button style={{ padding: 15, marginBottom: 10, width: "100%", fontWeight: "bold" }} type='submit' variant="contained" color="primary">{value}</Button>
     </form>
   );
 };
