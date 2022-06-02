@@ -1,19 +1,22 @@
 import { useState } from 'react';
 import axios from '../../utils/axiosBackend';
 import { useNavigate } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+
 
 axios.defaults.withCredentials = true;
 
-export const Register = ({ podaci }) => {
+export const Register = ({ podaci, value }) => {
   let navigate = useNavigate();
 
-  let sendThisObejctToAxios = {};
+  let reactState = {};
   podaci.forEach(prop => {
-    sendThisObejctToAxios[prop.name] = ''
+    reactState[prop.name] = ''
   });
 
   const [data, SetData] = useState(
-    sendThisObejctToAxios
+    reactState
   );
 
   const [error, setError] = useState({});
@@ -49,7 +52,8 @@ export const Register = ({ podaci }) => {
       {podaci.map((data) => {
         return (
           <div id={data.id}>
-            <input
+            <TextField
+              label={data.label || data.name}
               type={data.type}
               placeholder={data.placeholder || data.name}
               name={data.name}
@@ -59,7 +63,7 @@ export const Register = ({ podaci }) => {
           </div>
         )
       })}
-      <button type='submit'>Register</button>
+      <Button style={{ padding: 15, marginBottom: 10, fontWeight: "bold" }} type='submit' variant="contained" color="primary">{value}</Button>
     </form>
   );
 };

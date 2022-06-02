@@ -12,7 +12,7 @@ export const Page404 = () => {
       </div>
       <div className={Styled.info}>
         <h2 className={Styled.H2}>We can't find that page</h2>
-        <p className={Styled.paragraf}>We're fairly sure that page used to be here, but seems to have gone missing. We do apologise on it's behalf.</p> <Link to="/" className={Styled.link}>Home</Link> {" "}
+        <p className={Styled.paragraf}>We're fairly sure that page used to be here, but seems to have gone missing. We do apologise on it's behalf.</p> <Link to="/home" className={Styled.link}>Home</Link> {" "}
       </div>
     </div>
   );

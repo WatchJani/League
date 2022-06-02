@@ -8,7 +8,6 @@ import { Navbar } from './components/navBar';
 // import { ProtectedPage } from './pages/protectedPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import { NewUser } from './pages/newUser';
-import { Edit } from './pages/edit';
 import { RegisterJs } from './pages/register/registerJs';
 
 
@@ -26,7 +25,7 @@ export const App = () => {
         <Route path="/home" element={<Navbar />}>
           <Route index element={<Home />} />
           <Route path='add' element={<NewUser />} />
-          <Route path='edit/:id' element={<Edit />} />
+          <Route path='edit/:id' element={<RegisterJs />} />
         </Route>
 
         <Route

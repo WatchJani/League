@@ -21,7 +21,7 @@ export const Navbar = () => {
             });
     };
 
-
+    
     return (
         <>
             <IconButton onClick={logOut} aria-label="delete" size="large">
