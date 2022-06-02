@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 
 axios.defaults.withCredentials = true;
 
-export const Register = ({ podaci, value }) => {
+export const Register = ({ podaci, value, navigate, server }) => {
   let navigate = useNavigate();
 
   let reactState = {};
@@ -29,12 +29,12 @@ export const Register = ({ podaci, value }) => {
       sendThisObejctToAxios[prop.name] = data[prop.name]
     });
     axios
-      .post('/register',
+      .post(server,
         sendThisObejctToAxios
       )
       .then((res) => {
         console.log(res);
-        navigate('/login', { replace: true });
+        navigate(navigate, { replace: true });
       })
       .catch((err) => {
         setError(err.response.data.errors);
