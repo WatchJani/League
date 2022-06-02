@@ -27,6 +27,7 @@ export const Home = () => {
           width: 160,
         },
         { field: 'role', headerName: 'Role', width: 130 },
+        { field: 'activation_hash', headerName: 'Activated', width: 130 },
       ]}
     />
   );

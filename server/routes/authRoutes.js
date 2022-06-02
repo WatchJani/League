@@ -22,7 +22,7 @@ router.patch(
 router.get('/logout', authController.logout_Get);
 router.get('/protected', authController.protected_Get);
 
-router.get('/', getAll(User, { activation_hash: true }));
+router.get('/', getAll(User));
 
 router
   .route('/:id')
