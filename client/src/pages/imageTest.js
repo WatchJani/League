@@ -15,15 +15,10 @@ export const Image = () => {
     const Confireme = () => {
         const formData = new FormData();
         formData.append("name", data.name);
-        formData.append("file", data.selectedFile);
-        console.log(formData)
+        formData.append("image", data.selectedFile);
 
         axios
-            .post("http://localhost:5000/api/v1/users/image", formData, {
-                headers: {
-                    ...formData.getHeaders(),
-                }
-            })
+            .post("http://localhost:5000/api/v1/users/image", formData)
             .then((res) => {
                 alert("File Upload success");
             })
