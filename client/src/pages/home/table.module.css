@@ -1,0 +1,8 @@
+.tableContanier{
+    height: calc(100vh - 120px); 
+    width: 1340px
+}
+.table{
+    overflow-x: auto; 
+    padding: 20
+}

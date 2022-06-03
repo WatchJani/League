@@ -5,6 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import Styled from "./table.module.css"
 
 export const HomeUI = ({ rows, columns }) => {
   let navigate = useNavigate();
@@ -105,15 +106,17 @@ export const HomeUI = ({ rows, columns }) => {
           >
             ADD
           </Button>
-          <div style={{ height: 'calc(100vh - 120px)', width: 1340 }}>
+          <div
+            // className={Styled.className}
+            style={{ height: 'calc(100vh - 120px)', width: 'calc(100vw - 30px)' }}>
             <DataGrid
-              style={{ overflowX: 'auto', padding: 20 }}
+              className={`${DataGrid.className} table`}
               getRowId={(row) => row._id}
               rows={rows}
               columns={deffaultColumns.concat(columns)}
               pageSize={12}
               rowsPerPageOptions={[12]}
-              // checkboxSelection
+            // checkboxSelection
             />
           </div>
         </div>
