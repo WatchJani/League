@@ -39,11 +39,11 @@ const Storage = multer.diskStorage({
   },
 });
 
-const upload = multer({
+const uploadd = multer({
   storage: Storage,
 });
 
-router.post("/image", upload.single("image"), authController.image)
+router.post("/image", uploadd.single("image"), authController.image)
 
 
 
