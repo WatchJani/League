@@ -32,19 +32,18 @@ router.get('/', getAll(User));
 //izbaciti
 
 
-// const fileStorageEngine = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, '../image')
-//   },
-//   filename: (req, file, cb) => {
-//     cb(null, file.originalname)
-//   }
-// })
+const Storage = multer.diskStorage({
+  destination: 'uploads',
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + file?.originalname);
+  },
+});
 
+const upload = multer({
+  storage: Storage,
+});
 
-// const upload = multer({ storage: fileStorageEngine })
-
-router.post("/image", authController.image)
+router.post("/image", upload.single("image"), authController.image)
 
 
 
