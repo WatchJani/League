@@ -6,9 +6,10 @@ export const RegisterJs = () => {
 
   return (
     <Register
-      server={`/image`}
+      server={`/register/${params.id}`}
       pageNavigate={'/home'}
       value={'register'}
+      method={"patch"}
       podaci={[
         { id: 1, type: 'text', name: 'name', placeholder: 'name' },
         { id: 2, type: 'text', name: 'lastName', placeholder: 'last name' },

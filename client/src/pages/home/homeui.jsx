@@ -110,7 +110,7 @@ export const HomeUI = ({ rows, columns }) => {
             // className={Styled.className}
             style={{ height: 'calc(100vh - 120px)', width: 'calc(100vw - 30px)' }}>
             <DataGrid
-              className={`${DataGrid.className} table`}
+              className="table"
               getRowId={(row) => row._id}
               rows={rows}
               columns={deffaultColumns.concat(columns)}

@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 
 axios.defaults.withCredentials = true;
 
-export const Register = ({ podaci, value, pageNavigate, server }) => {
+export const Register = ({ podaci, value, pageNavigate, server, method }) => {
   let navigate = useNavigate();
 
   let reactState = {};
@@ -27,15 +27,27 @@ export const Register = ({ podaci, value, pageNavigate, server }) => {
       formData.append(atributtes.name, data[atributtes.name])
     });
 
-    axios
-      .post(server, formData)
-      .then((res) => {
-        console.log(res);
-        navigate(pageNavigate, { replace: true });
-      })
-      .catch((err) => {
-        setError(err.response.data.errors);
-      });
+    if (method == 'post')
+      axios
+        .post(server, formData)
+        .then((res) => {
+          console.log(res);
+          navigate(pageNavigate, { replace: true });
+        })
+        .catch((err) => {
+          setError(err.response.data.errors);
+        });
+      else{
+        axios
+        .patch(server, formData)
+        .then((res) => {
+          console.log(res);
+          navigate(pageNavigate, { replace: true });
+        })
+        .catch((err) => {
+          setError(err.response.data.errors);
+        });
+      }
   };
 
   const newValue = (e) => {
@@ -43,7 +55,6 @@ export const Register = ({ podaci, value, pageNavigate, server }) => {
     else SetData({ ...data, [e.target.name]: e.target.value });
   };
 
-  console.log(data)
 
   return (
     <form className={Styled.form} onSubmit={Submit} >
