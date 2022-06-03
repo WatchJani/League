@@ -23,28 +23,9 @@ export const Register = ({ podaci, value, pageNavigate, server }) => {
     e.preventDefault();
     const formData = new FormData();
 
-    // TODO ovako treba da izgleda
-    // formData.append("name", data.name);
-    // formData.append("image", data.selectedFile);
-
-    // ne ovaj oblik vec ovaj gore 
-    // let sendThisObejctToAxios = {};
-    // podaci.forEach(prop => {
-    //   sendThisObejctToAxios[prop.name] = data[prop.name]
-    // });
-
-    // podaci.forEach(atributtes => {
-    //   formData.append(atributtes.name, "name")
-    // });
-
-    formData.append("name", data.name);
-    formData.append("lastName", data.lastName);
-    formData.append("password", data.password);
-    formData.append("address", data.address);
-    formData.append("phone", data.phone);
-    formData.append("image", data.image);
-
-    console.log(" ovo je formData ", formData)
+    podaci.forEach(atributtes => {
+      formData.append(atributtes.name, data[atributtes.name])
+    });
 
     axios
       .post(server, formData)
