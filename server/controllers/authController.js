@@ -80,3 +80,13 @@ module.exports.protected_Get = catchAsync(async (req, res, next) => {
     next(new AppError('You are not logged in. Authentication Failed!', 401));
   });
 });
+
+
+module.exports.image = catchAsync(async (req, res, next) => {
+  const {name} = req.body;
+  const file = req.file
+
+  console.log(file, name)
+  return res.status(200).json({ status: { file, name } })
+
+});

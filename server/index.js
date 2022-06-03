@@ -13,6 +13,7 @@ const Player = require('./models/playerModel');
 const League = require('./models/leagueModel');
 const Season = require('./models/seasonModel');
 
+
 const app = express();
 
 cloudinary.config({
@@ -54,6 +55,10 @@ app.all('*', (req, res, next) => {
 });
 
 app.use(errorController);
+
+
+
+
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);

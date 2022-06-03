@@ -1,4 +1,8 @@
 const { Router } = require('express');
+//izbaciti
+const multer = require("multer")
+
+
 const authController = require('../controllers/authController');
 const {
   getAll,
@@ -23,6 +27,26 @@ router.get('/logout', authController.logout_Get);
 router.get('/protected', authController.protected_Get);
 
 router.get('/', getAll(User));
+
+
+//izbaciti
+
+
+// const fileStorageEngine = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, '../image')
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, file.originalname)
+//   }
+// })
+
+
+// const upload = multer({ storage: fileStorageEngine })
+
+router.post("/image", authController.image)
+
+
 
 router
   .route('/:id')
