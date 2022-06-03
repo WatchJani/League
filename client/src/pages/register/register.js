@@ -15,27 +15,39 @@ export const Register = ({ podaci, value, pageNavigate, server }) => {
     reactState[prop.name] = ''
   });
 
-  const [data, SetData] = useState(
-    reactState
-  );
+  const [data, SetData] = useState(reactState);
 
   const [error, setError] = useState({});
 
   const Submit = (e) => {
     e.preventDefault();
-    const formData = new FormData()
-    formData.append('image', data.image)
+    const formData = new FormData();
 
+    // TODO ovako treba da izgleda
+    // formData.append("name", data.name);
+    // formData.append("image", data.selectedFile);
 
+    // ne ovaj oblik vec ovaj gore 
+    // let sendThisObejctToAxios = {};
+    // podaci.forEach(prop => {
+    //   sendThisObejctToAxios[prop.name] = data[prop.name]
+    // });
 
-    let sendThisObejctToAxios = {};
-    podaci.forEach(prop => {
-      sendThisObejctToAxios[prop.name] = data[prop.name]
-    });
+    // podaci.forEach(atributtes => {
+    //   formData.append(atributtes.name, "name")
+    // });
+
+    formData.append("name", data.name);
+    formData.append("lastName", data.lastName);
+    formData.append("password", data.password);
+    formData.append("address", data.address);
+    formData.append("phone", data.phone);
+    formData.append("image", data.image);
+
+    console.log(" ovo je formData ", formData)
+
     axios
-      .post(server,
-        sendThisObejctToAxios, formData
-      )
+      .post(server, formData)
       .then((res) => {
         console.log(res);
         navigate(pageNavigate, { replace: true });
@@ -46,7 +58,8 @@ export const Register = ({ podaci, value, pageNavigate, server }) => {
   };
 
   const newValue = (e) => {
-    SetData({ ...data, [e.target.name]: e.target.value });
+    if (e.target.name === "image") SetData({ ...data, [e.target.name]: e.target.files[0] });
+    else SetData({ ...data, [e.target.name]: e.target.value });
   };
 
   console.log(data)

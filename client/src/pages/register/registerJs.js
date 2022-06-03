@@ -6,7 +6,7 @@ export const RegisterJs = () => {
 
   return (
     <Register
-      server={`/register/${params.id}`}
+      server={`/image`}
       pageNavigate={'/home'}
       value={'register'}
       podaci={[

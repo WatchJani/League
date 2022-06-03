@@ -83,10 +83,10 @@ module.exports.protected_Get = catchAsync(async (req, res, next) => {
 
 
 module.exports.image = catchAsync(async (req, res, next) => {
-  const {name} = req.body;
+  const { name, lastName, password, address, phone } = req.body;
   const image = req.file.filename;
 
-  console.log( name, image ) 
-  return res.status(200).json({ status: {  name, image } })
+  console.log(name, image, address, password, address, phone)
+  return res.status(200).json({ status: { name, image, address, password, address, phone } })
 
 });
