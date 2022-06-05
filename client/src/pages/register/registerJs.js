@@ -1,23 +1,22 @@
 import { useParams } from 'react-router-dom';
+import formData from './formData';
 import { Register } from './register';
 
-export const RegisterJs = () => {
+export const RegisterJs = ({ type }) => {
   const params = useParams();
+  const podaci = formData(type);
 
+  const url = type === 'users' ? `/register/${params.id}` : `/${type}`;
+
+  console.log(type);
   return (
     <Register
-      server={`/register/${params.id}`}
-      pageNavigate={'/home'}
+      url={url}
+      pageNavigate={`/${type}`}
       value={'register'}
-      podaci={[
-        { id: 1, type: 'text', name: 'name', placeholder: 'name' },
-        { id: 2, type: 'text', name: 'lastName', placeholder: 'last name' },
-        { id: 3, type: 'password', name: 'password', placeholder: 'password' },
-        { id: 4, type: 'text', name: 'address', placeholder: 'address' },
-        { id: 5, type: 'text', name: 'phone', placeholder: 'phone' },
-        { id: 6, type: 'file', name: 'image', placeholder: 'image' },
-        //name se koristi za ime koje ce se primati na serveru
-      ]}
+      podaci={podaci}
+      type={type}
+      method={type === 'users' ? 'patch' : 'post'}
     />
   );
 };

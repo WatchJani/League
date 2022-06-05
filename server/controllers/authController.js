@@ -15,8 +15,15 @@ const createToken = (id) => {
 module.exports.login_Post = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 
+  if (!email || !password)
+    return next(new AppError('Please enter email and password!'));
+
   const user = await User.login(email, password, next);
-  console.log(user);
+  if (!user)
+    return next(
+      new AppError('User with this email and password does not exist!')
+    );
+
   const token = createToken(user._id);
   res.cookie('jwt', token, { maxAge: maxAge * 1000 });
   res.status(200).json({ status: 'success', data: user._id });
@@ -33,36 +40,40 @@ module.exports.createPendingUser_Post = catchAsync(async (req, res, next) => {
     path: '/',
   });
 
-  nodemailer.sendConfirmationEmail(user.email, user.id);
+  nodemailer.sendConfirmationEmail(user.email, token);
 
   res.status(201).json({ status: 'success', data: { token, email } });
 });
 
 module.exports.register_Patch = catchAsync(async (req, res, next) => {
   const { password, name, lastName, phone, address, role } = req.body;
-  console.log(req.file, req);
   const image = req.file?.path;
+  const id = req.params.id;
 
   if (!password || !name || !lastName)
-    return next(new AppError('Fields: password, name, lastName are required!'));
+    return next(
+      new AppError('Fields: name, last name and password are required!')
+    );
 
-  const user = await User.findOne({ _id: req.params.id }).select('+password');
-  if (!user) return next(new AppError('User with this email does not exist!'));
-  if (user.activation_hash)
-    return next(new AppError('You are already registrered!'));
+  jwt.verify(id, process.env.JWT_SECRET, async function (err, decoded) {
+    const user = await User.findById(decoded.id).select('+password');
+    if (!user)
+      return next(new AppError('User with this token does not exist!'));
+    if (user.activation_hash)
+      return next(new AppError('You are already registrered!'));
 
-  user.activation_hash = true;
-  user.name = name;
-  user.lastName = lastName;
-  user.password = password;
-  user.phone = phone;
-  user.address = address;
-  user.role = role;
-  user.image = image;
+    user.activation_hash = true;
+    user.name = name;
+    user.lastName = lastName;
+    user.password = password;
+    user.phone = phone;
+    user.address = address;
+    user.role = role;
+    user.image = image;
 
-  await user.save();
-
-  res.status(201).json({ status: 'success', data: { user } });
+    await user.save();
+    res.status(201).json({ status: 'success', data: { user } });
+  });
 });
 
 module.exports.logout_Get = (req, res, next) => {

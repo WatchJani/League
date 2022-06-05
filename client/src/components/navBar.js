@@ -9,7 +9,7 @@ export const Navbar = () => {
 
   const logOut = () => {
     axios
-      .get('/logout')
+      .get('/users/logout')
       .then((res) => {
         console.log(res);
         navigate('/', { replace: true });

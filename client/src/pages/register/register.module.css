@@ -16,13 +16,15 @@
   max-width: 350px;
 }
 
+.field {
+  margin: 0.3rem 0 !important;
+}
 
-
-input[type="file"] {
+input[type='file'] {
   cursor: pointer;
 }
 
-input[type="file"]::file-selector-button {
+input[type='file']::file-selector-button {
   opacity: 0;
 }
 

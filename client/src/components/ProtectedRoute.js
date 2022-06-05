@@ -9,7 +9,7 @@ const ProtectedRoute = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get('/protected', { headers: authHeader() })
+      .get('/users/protected', { headers: authHeader() })
       .then((res) => {
         console.log(res);
         if (res?.data?.token) return setVerified(true);
