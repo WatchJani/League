@@ -5,8 +5,7 @@ import { Home } from './pages/home/home';
 import { Navbar } from './components/navBar';
 import ProtectedRoute from './components/ProtectedRoute';
 import { RegisterJs } from './pages/register/registerJs';
-import { Image } from './pages/imageTest';
-
+import { AddUser } from "./pages/addUser.js"
 
 
 export const App = () => {
@@ -21,7 +20,7 @@ export const App = () => {
         {/* ovaj blok koda dodati u protected route kada bude sve radilo :D */}
         <Route path="/home" element={<Navbar />}>
           <Route index element={<Home />} />
-          <Route path='add' element={<RegisterJs />} />
+          <Route path='add' element={<AddUser />} />
           <Route path='edit/:id' element={<RegisterJs />} />
         </Route>
 
@@ -29,7 +28,6 @@ export const App = () => {
           path='/homee'
           element={
             <ProtectedRoute>
-
 
             </ProtectedRoute>
           }

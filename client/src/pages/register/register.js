@@ -27,7 +27,9 @@ export const Register = ({ podaci, value, pageNavigate, server, method }) => {
       formData.append(atributtes.name, data[atributtes.name])
     });
 
-    if (method == 'post')
+
+    //samo ljepse zapisati
+    if (method === 'post') {
       axios
         .post(server, formData)
         .then((res) => {
@@ -37,8 +39,9 @@ export const Register = ({ podaci, value, pageNavigate, server, method }) => {
         .catch((err) => {
           setError(err.response.data.errors);
         });
-      else{
-        axios
+    }
+    else {
+      axios
         .patch(server, formData)
         .then((res) => {
           console.log(res);
@@ -47,8 +50,10 @@ export const Register = ({ podaci, value, pageNavigate, server, method }) => {
         .catch((err) => {
           setError(err.response.data.errors);
         });
-      }
+    }
   };
+
+  console.log(data)
 
   const newValue = (e) => {
     if (e.target.name === "image") SetData({ ...data, [e.target.name]: e.target.files[0] });
