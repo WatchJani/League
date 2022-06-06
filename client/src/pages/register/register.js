@@ -11,17 +11,17 @@ axios.defaults.withCredentials = true;
 export const Register = ({ podaci, value, pageNavigate, url, method }) => {
   let navigate = useNavigate();
 
-  let reactState = {};
-  podaci.forEach((prop) => {
-    reactState[prop.name] = '';
-  });
+  console.log(method, url);
 
-  const [data, setData] = useState(reactState);
+  const [data, setData] = useState(null);
   const [error, setError] = useState();
   const [loading, setLoading] = useState();
 
+  console.log(data);
+
   const Submit = (e) => {
     e.preventDefault();
+    if (!data) return setError('Please enter data!');
     setLoading(true);
     const formData = new FormData();
     formData.append('image', data.image);

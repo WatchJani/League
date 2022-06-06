@@ -13,7 +13,7 @@ const { upload } = require('../utils/uploadImage');
 const router = Router();
 
 router.post('/login', authController.login_Post);
-router.post('/register', authController.createPendingUser_Post);
+router;
 router.patch(
   '/register/:id',
   upload.single('image'),
@@ -22,7 +22,7 @@ router.patch(
 router.get('/logout', authController.logout_Get);
 router.get('/protected', authController.protected_Get);
 
-router.get('/', getAll(User));
+router.route('/').post(authController.createPendingUser_Post).get(getAll(User));
 
 router
   .route('/:id')

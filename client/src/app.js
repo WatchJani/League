@@ -11,8 +11,8 @@ export const App = () => {
   const RenderTableData = (type) => (
     <Route path={`/${type}`} element={<Navbar />}>
       <Route index element={<TableData type={type} />} />
-      <Route path='add' element={<RegisterJs type={type} />} />
-      <Route path='edit/:id' element={<RegisterJs type={type} />} />
+      <Route path='add' element={<RegisterJs type={type} path='add' />} />
+      <Route path='edit/:id' element={<RegisterJs type={type} edit={true} />} />
     </Route>
   );
 
@@ -23,7 +23,7 @@ export const App = () => {
           {/* <Route path='/' element={<Home />} /> */}
           <Route path='*' element={<Page404 />} />
           <Route index element={<Login />} />
-          <Route path='register/:id' element={<RegisterJs />} />
+          <Route path='register/:id' element={<RegisterJs type='register' />} />
 
           {/* ovaj blok koda dodati u protected route kada bude sve radilo :D */}
           {RenderTableData('users')}

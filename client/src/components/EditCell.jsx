@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -7,7 +7,6 @@ import { ModalContext } from '../context/modalContext';
 
 function EditCell({ id }) {
   const navigate = useNavigate();
-  const params = useParams();
   const btnIconColor = 'rgb(212, 0, 0)';
   const { modal, setModal } = useContext(ModalContext);
 
