@@ -13,7 +13,6 @@ const Player = require('./models/playerModel');
 const League = require('./models/leagueModel');
 const Season = require('./models/seasonModel');
 
-
 const app = express();
 
 cloudinary.config({
