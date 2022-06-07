@@ -11,13 +11,11 @@ axios.defaults.withCredentials = true;
 export const Register = ({ podaci, value, pageNavigate, url, method }) => {
   let navigate = useNavigate();
 
-  console.log(method, url);
+  console.log(method, url, method);
 
   const [data, setData] = useState(null);
   const [error, setError] = useState();
   const [loading, setLoading] = useState();
-
-  console.log(data);
 
   const Submit = (e) => {
     e.preventDefault();

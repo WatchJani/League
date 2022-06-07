@@ -6,10 +6,8 @@ export const RegisterJs = ({ type, edit, path }) => {
   const params = useParams();
   const podaci = formData(type, edit);
 
-  const url =
-    type === 'register'
-      ? `users/register/${params.id}`
-      : `/${type}/${params.id}`;
+  const id = params.id ? params.id : '';
+  const url = type === 'register' ? `users/register/${id}` : `/${type}/${id}`;
 
   let method = 'post';
   if (type === 'users' || type === 'register') method = 'patch';
