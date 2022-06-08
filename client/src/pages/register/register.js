@@ -13,7 +13,12 @@ export const Register = ({ podaci, value, pageNavigate, url, method }) => {
 
   console.log(method, url, method);
 
-  const [data, setData] = useState(null);
+  let reactState = {};
+  podaci.forEach((prop) => {
+    reactState[prop.name] = '';
+  });
+
+  const [data, setData] = useState(reactState);
   const [error, setError] = useState();
   const [loading, setLoading] = useState();
 
