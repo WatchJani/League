@@ -22,7 +22,10 @@ export const Register = ({ podaci, value, pageNavigate, url, method }) => {
     if (!data) return setError('Please enter data!');
     setLoading(true);
     const formData = new FormData();
-    formData.append('image', data.image);
+
+    podaci.forEach((atributtes) => {
+      formData.append(atributtes.name, data[atributtes.name]);
+    });
 
     axios
       .request({ url, data, method })
@@ -33,7 +36,12 @@ export const Register = ({ podaci, value, pageNavigate, url, method }) => {
       });
   };
 
-  const newValue = (e) => setData({ ...data, [e.target.name]: e.target.value });
+  const newValue = (e) => {
+    if (e.target.name === 'image')
+      setData({ ...data, [e.target.name]: e.target.files[0] });
+    else setData({ ...data, [e.target.name]: e.target.value });
+  };
+
   if (loading) return <Spinner />;
 
   return (
