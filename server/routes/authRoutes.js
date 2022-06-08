@@ -22,7 +22,7 @@ router.patch(
   upload.single('image'),
   authController.register_Patch
 );
-router.post('/register', authController.createPendingUser_Post);
+router.post('/', upload.single('image'), authController.createPendingUser_Post);
 router.get('/logout', authController.logout_Get);
 router.get('/protected', authController.protected_Get);
 

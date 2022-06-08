@@ -28,12 +28,12 @@ export const Register = ({ podaci, value, pageNavigate, url, method }) => {
     setLoading(true);
     const formData = new FormData();
 
-    podaci.forEach((atributtes) => {
-      formData.append(atributtes.name, data[atributtes.name]);
-    });
+    podaci.forEach((atributtes) =>
+      formData.append(atributtes.name, data[atributtes.name])
+    );
 
     axios
-      .request({ url, data, method })
+      .request({ url, formData, method })
       .then(() => navigate(pageNavigate, { replace: true }))
       .catch((err) => {
         setError(err.response.data.message);
