@@ -6,7 +6,6 @@ module.exports.Generate = catchAsync(async (req, res, next) => {
     const teams = req.body.teams
 
 
-
     const roundRobin = (teams) => {
         let schedule = []
         let league = teams.slice()
