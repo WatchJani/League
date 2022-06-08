@@ -30,18 +30,18 @@ const TableData = ({ type = 'users' }) => {
       .finally(() => setLoading(false));
   };
 
-  console.log(type);
-
   useEffect(() => {
+    console.log('aaalo');
+    setLoading(true);
     fetchRows();
-  }, []);
+  }, [type]);
 
   const navigate = useNavigate();
 
   const deleteData = () => {
     setLoading(true);
     axios
-      .delete(`/${type}/${modal}`) // modal drzi id
+      .delete(`/${type}/${modal}`)
       .then(() => {
         fetchRows();
         setModal(null);

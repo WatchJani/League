@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import formData from './formData';
 import { Register } from './register';
 
-export const RegisterJs = ({ type, edit, path }) => {
+export const RegisterJs = ({ type, edit, path, navigate }) => {
   const params = useParams();
   const podaci = formData(type, edit);
 
@@ -16,7 +16,7 @@ export const RegisterJs = ({ type, edit, path }) => {
   return (
     <Register
       url={url}
-      pageNavigate={type === 'register' ? '/users' : `/${type}`}
+      pageNavigate={navigate || `/${type}`}
       value={'register'}
       podaci={podaci}
       type={type}

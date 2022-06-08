@@ -22,11 +22,11 @@ router.patch(
   upload.single('image'),
   authController.register_Patch
 );
-router.post('/', upload.single('image'), authController.createPendingUser_Post);
 router.get('/logout', authController.logout_Get);
 router.get('/protected', authController.protected_Get);
 
 router.get('/', getAll(User));
+router.post('/', authController.createPendingUser_Post);
 
 //izbaciti
 
@@ -46,7 +46,7 @@ router.post('/image', uploadd.single('image'), authController.image);
 router
   .route('/:id')
   .get(getOne(User))
-  .patch(updateOne(User))
+  .patch(upload.single('image'), updateOne(User))
   .delete(deleteOne(User));
 
 module.exports = router;

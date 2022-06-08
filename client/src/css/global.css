@@ -67,3 +67,23 @@ body {
     opacity: 0;
   }
 }
+
+body {
+  overflow: hidden;
+  height: 100vh;
+  width: 100%;
+}
+
+nav {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  background-color: #1976d2;
+}
+
+nav a {
+  color: #fff;
+  font-size: 1.3em;
+  text-decoration: none;
+}

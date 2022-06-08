@@ -17,16 +17,27 @@ exports.deleteOne = (Model) =>
 
 exports.updateOne = (Model) =>
   catchAsync(async (req, res, next) => {
+    const { password, name, lastName, phone, address, role } = req.body;
+    const image = req.file?.path;
+
+    console.log(req.params.id, req.body);
     const doc = await Model.findByIdAndUpdate(
       req.params.id,
-      { ...req.body, activation_hash: true },
+      {
+        password,
+        name,
+        lastName,
+        phone,
+        address,
+        role,
+        image,
+        activation_hash: true,
+      },
       {
         new: true,
         runValidators: true,
       }
     );
-
-    console.log(req.params.id, req.body);
 
     if (!doc) {
       return next(new AppError('No document found with that ID', 404));

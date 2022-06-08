@@ -11,14 +11,9 @@ axios.defaults.withCredentials = true;
 export const Register = ({ podaci, value, pageNavigate, url, method }) => {
   let navigate = useNavigate();
 
-  console.log(method, url, method);
+  console.log(method.toUpperCase(), url);
 
-  let reactState = {};
-  podaci.forEach((prop) => {
-    reactState[prop.name] = '';
-  });
-
-  const [data, setData] = useState(reactState);
+  const [data, setData] = useState(null);
   const [error, setError] = useState();
   const [loading, setLoading] = useState();
 
@@ -32,10 +27,13 @@ export const Register = ({ podaci, value, pageNavigate, url, method }) => {
       formData.append(atributtes.name, data[atributtes.name])
     );
 
+    const sendData = data.image ? formData : data;
+
     axios
-      .request({ url, formData, method })
+      .request({ url, data: sendData, method })
       .then(() => navigate(pageNavigate, { replace: true }))
       .catch((err) => {
+        console.log(err);
         setError(err.response.data.message);
         setLoading(false);
       });
