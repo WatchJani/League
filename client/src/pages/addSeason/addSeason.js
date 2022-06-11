@@ -17,7 +17,7 @@ export const AddSeason = () => {
     const Submit = (e) => {
         e.preventDefault();
         axios
-            .post("http://localhost:5000/api/v1/seasons/generator", { teams: chackedClubs })
+            .post("http://localhost:5000/api/v1/seasons/generator/create", { teams: [chackedClubs] }) // teams: ["Barcelona", "Real Madrid"] ovako treba izgledati!
             .then((res) => {
                 console.log(res);
             })
