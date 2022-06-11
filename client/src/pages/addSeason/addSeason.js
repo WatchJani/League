@@ -4,8 +4,8 @@ import axios from 'axios';
 export const AddSeason = () => {
 
 
-    const clubs = [{ name: "Barcelona", price: 3213 },
-    { name: "Real Madrid", price: 3213 }]
+    const clubs = [{ name: "Barcelona" },
+    { name: "Real Madrid" }]
 
 
     const [checkedState, setCheckedState] = useState(
