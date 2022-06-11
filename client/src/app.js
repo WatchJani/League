@@ -6,6 +6,7 @@ import { Navbar } from './components/navBar';
 import ProtectedRoute from './components/ProtectedRoute';
 import { RegisterJs } from './pages/register/registerJs';
 import { AddUser } from "./pages/addUser.js"
+import { AddSeason } from './pages/addSeason/addSeason';
 
 
 export const App = () => {
@@ -22,6 +23,7 @@ export const App = () => {
           <Route index element={<Home />} />
           <Route path='add' element={<AddUser />} />
           <Route path='edit/:id' element={<RegisterJs />} />
+          <Route path='season' element={<AddSeason />} />
         </Route>
 
         <Route
