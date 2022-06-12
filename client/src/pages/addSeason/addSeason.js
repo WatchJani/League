@@ -2,16 +2,21 @@ import { useState } from "react";
 import axios from "axios";
 
 export const AddSeason = () => {
-    const clubs = [{ name: "Barcelona" }, { name: "Real Madrid" }];
+    const allClubs = [{ name: "Barcelona" }, { name: "Real Madrid" }];
 
     const [checkedState, setCheckedState] = useState(
-        new Array(clubs.length).fill(false)
+        new Array(allClubs.length).fill(false)
     );
 
     const [chackedClubs, setChackedClubs] = useState([]);
 
     const Submit = (e) => {
         e.preventDefault();
+        if (
+            chackedClubs.length < 2 &&
+            !alert("Mora bitni izabrano njamnaje 2 tima ")
+        )
+            return;
         axios
             .post("http://localhost:5000/api/v1/seasons/generator/create", {
                 teams: chackedClubs,
@@ -27,18 +32,18 @@ export const AddSeason = () => {
         );
         setCheckedState(updatedCheckedState);
 
-        let Clubs = clubs.filter((club, index) => {
+        const Clubs = allClubs.filter((club, index) => {
             return updatedCheckedState[index];
         }, "");
 
-        Clubs = Clubs.map((club) => club.name);
-        console.log(Clubs);
-        setChackedClubs(Clubs);
+        const ClubsNames = Clubs.map((club) => club.name);
+        console.log(ClubsNames);
+        setChackedClubs(ClubsNames);
     };
 
     return (
         <form onSubmit={Submit}>
-            {clubs.map(({ name }, index) => {
+            {allClubs.map(({ name }, index) => {
                 return (
                     <div key={index}>
                         <input
@@ -53,14 +58,7 @@ export const AddSeason = () => {
                     </div>
                 );
             })}
-
-            {/* // */}
-
-            <div>{chackedClubs}</div>
-
-            {/* // */}
-
-            <button type="submit"> Add </button>
+            <button> Add </button>
         </form>
     );
 };
