@@ -14,7 +14,7 @@ const { upload } = require('../utils/uploadImage');
 const router = Router();
 
 router.post('/login', authController.login_Post);
-router;
+router.post('/register', authController.createPendingUser_Post);
 router.patch(
   '/register/:id',
   upload.single('image'),
