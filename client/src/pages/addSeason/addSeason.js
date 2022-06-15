@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from '../../utils/axiosBackend';
+import { useNavigate } from 'react-router-dom';
 
 export const AddSeason = () => {
+    let navigate = useNavigate();
 
     const [allClubs, setAllClubs] = useState([])
 
@@ -10,7 +12,7 @@ export const AddSeason = () => {
     }, [allClubs])
 
     const [checkedState, setCheckedState] = useState();
-    
+
     const [chackedClubs, setChackedClubs] = useState([]);
 
     const Submit = (e) => {
@@ -26,6 +28,7 @@ export const AddSeason = () => {
             })
             .then((res) => {
                 console.log(res);
+                navigate("season")
             });
     };
 
@@ -34,7 +37,6 @@ export const AddSeason = () => {
             .get("teams")
             .then((res) => {
                 setAllClubs(res.data.data)
-                console.log(res.data.data);
             });
     }, [])
 

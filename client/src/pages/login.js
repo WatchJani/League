@@ -32,7 +32,9 @@ export const Login = () => {
   };
 
   const newValue = (e) => SetData({ ...data, [e.target.name]: e.target.value });
-  console.log(error);
+
+  // console.log(error);
+  console.log(data)
 
   if (loading) return <Spinner />;
 

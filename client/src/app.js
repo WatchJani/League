@@ -40,12 +40,11 @@ export const App = () => {
 
           <Route path='*' element={<Page404 />} />
           <Route index element={<Login />} />
-
-          <Route path='/confirmation' element={<Confirmation />} />
           <Route
             path='register/:id'
             element={<RegisterJs type='register' navigate='/users' />}
           />
+          <Route path='/confirmation' element={<Confirmation />} />
 
           {RenderTableData('users')}
           {RenderTableData('teams')}
