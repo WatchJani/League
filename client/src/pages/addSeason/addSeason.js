@@ -2,15 +2,15 @@ import { useState, useEffect } from "react";
 import axios from '../../utils/axiosBackend';
 
 export const AddSeason = () => {
-    // const allClubs = [{ name: "Barcelona" }, { name: "Real Madrid" }];
-
 
     const [allClubs, setAllClubs] = useState([])
 
-    const [checkedState, setCheckedState] = useState(
-        new Array(allClubs.length).fill(false)
-    );
+    useEffect(() => {
+        setCheckedState(new Array(allClubs.length).fill(false))
+    }, [allClubs])
 
+    const [checkedState, setCheckedState] = useState();
+    
     const [chackedClubs, setChackedClubs] = useState([]);
 
     const Submit = (e) => {
@@ -38,8 +38,6 @@ export const AddSeason = () => {
             });
     }, [])
 
-
-
     const handleOnChange = (position) => {
         const updatedCheckedState = checkedState.map((item, index) =>
             index === position ? !item : item
@@ -54,6 +52,8 @@ export const AddSeason = () => {
         console.log(ClubsNames);
         setChackedClubs(ClubsNames);
     };
+
+    console.log(checkedState)
 
     return (
         <form onSubmit={Submit}>
