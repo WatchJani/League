@@ -9,7 +9,7 @@ import TableData from './components/TableData';
 import Confirmation from './pages/Confirmation';
 
 export const App = () => {
-  const RenderTableData = (type) => (
+  const RenderTableData = (type, option = false) => (
     <Route
       path={`/${type}`}
       element={
@@ -18,7 +18,7 @@ export const App = () => {
         </ProtectedRoute>
       }
     >
-      <Route index element={<TableData type={type} />} />
+      <Route index element={<TableData type={type} secondButton={option} />} />
       <Route path='add' element={<RegisterJs type={type} path='add' />} />
       <Route path='edit/:id' element={<RegisterJs type={type} edit={true} />} />
     </Route>
@@ -35,7 +35,7 @@ export const App = () => {
             }
           />
 
-          {/* <Route path='/' element={<Home />} /> */}
+
           <Route path='*' element={<Page404 />} />
           <Route index element={<Login />} />
           <Route
@@ -44,14 +44,13 @@ export const App = () => {
           />
           <Route path='/confirmation' element={<Confirmation />} />
 
-          {/* ovaj blok koda dodati u protected route kada bude sve radilo :D */}
+
           {RenderTableData('users')}
           {RenderTableData('teams')}
           {RenderTableData('players')}
-          {RenderTableData('seasons')}
+          {RenderTableData('seasons', true)}
           {RenderTableData('leagues')}
 
-          <Route path='/homee' element={<ProtectedRoute></ProtectedRoute>} />
         </Routes>
       </Router>
     </ModalProvider>

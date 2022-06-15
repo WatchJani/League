@@ -96,6 +96,7 @@ const formData = (type, edit) => {
         { id: 3, type: 'number', name: 'actual', placeholder: 'actual' },
         { id: 4, type: 'text', name: 'locked', placeholder: 'locked' },
         { id: 5, type: 'file', name: 'image', placeholder: 'image' },
+
       ];
       break;
   }

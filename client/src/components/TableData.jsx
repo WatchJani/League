@@ -15,7 +15,7 @@ import {
 import Modal from './Modal';
 import { ModalContext } from '../context/modalContext';
 
-const TableData = ({ type = 'users' }) => {
+const TableData = ({ type = 'users', secondButton }) => {
   const [error, setError] = useState(null);
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -100,6 +100,17 @@ const TableData = ({ type = 'users' }) => {
           >
             ADD
           </Button>
+          {secondButton &&
+            <Button
+              style={{ width: 200, padding: 15 }}
+              startIcon={<AddCircleIcon />}
+              variant='contained'
+              onClick={() => navigate('add')}
+            >
+              Create Season
+            </Button>}
+
+
           <div
             style={{
               height: 'calc(100vh - 120px)',
