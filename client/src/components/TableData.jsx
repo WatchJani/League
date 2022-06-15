@@ -107,7 +107,7 @@ const TableData = ({ type = 'users', secondButton }) => {
                 style={{ width: 200, padding: 15, marginLeft: 5 }}
                 startIcon={<AddCircleIcon />}
                 variant='contained'
-                onClick={() => navigate('add')}
+                onClick={() => navigate('create')}
               >
                 Create Season
               </Button>}

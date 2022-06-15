@@ -7,6 +7,7 @@ import { RegisterJs } from './pages/register/registerJs';
 import { ModalProvider } from './context/modalContext';
 import TableData from './components/TableData';
 import Confirmation from './pages/Confirmation';
+import { AddSeason } from './pages/addSeason/addSeason';
 
 export const App = () => {
   const RenderTableData = (type, option = false) => (
@@ -21,6 +22,7 @@ export const App = () => {
       <Route index element={<TableData type={type} secondButton={option} />} />
       <Route path='add' element={<RegisterJs type={type} path='add' />} />
       <Route path='edit/:id' element={<RegisterJs type={type} edit={true} />} />
+      <Route path='create' element={<AddSeason />} />
     </Route>
   );
 
@@ -38,12 +40,12 @@ export const App = () => {
 
           <Route path='*' element={<Page404 />} />
           <Route index element={<Login />} />
+
+          <Route path='/confirmation' element={<Confirmation />} />
           <Route
             path='register/:id'
             element={<RegisterJs type='register' navigate='/users' />}
           />
-          <Route path='/confirmation' element={<Confirmation />} />
-
 
           {RenderTableData('users')}
           {RenderTableData('teams')}
