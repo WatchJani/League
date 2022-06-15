@@ -92,24 +92,26 @@ const TableData = ({ type = 'users', secondButton }) => {
             alignItems: 'end',
           }}
         >
-          <Button
-            style={{ width: 200, padding: 15 }}
-            startIcon={<AddCircleIcon />}
-            variant='contained'
-            onClick={() => navigate('add')}
-          >
-            ADD
-          </Button>
-          {secondButton &&
+
+          <div>
             <Button
               style={{ width: 200, padding: 15 }}
               startIcon={<AddCircleIcon />}
               variant='contained'
               onClick={() => navigate('add')}
             >
-              Create Season
-            </Button>}
-
+              ADD
+            </Button>
+            {secondButton &&
+              <Button
+                style={{ width: 200, padding: 15, marginLeft: 5 }}
+                startIcon={<AddCircleIcon />}
+                variant='contained'
+                onClick={() => navigate('add')}
+              >
+                Create Season
+              </Button>}
+          </div>
 
           <div
             style={{
