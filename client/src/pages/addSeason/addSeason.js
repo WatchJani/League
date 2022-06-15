@@ -28,7 +28,7 @@ export const AddSeason = () => {
             })
             .then((res) => {
                 console.log(res);
-                navigate("season")
+                navigate("/seasons")
             });
     };
 
