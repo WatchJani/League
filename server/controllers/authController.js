@@ -82,14 +82,14 @@ module.exports.logout_Get = (req, res, next) => {
 };
 
 module.exports.protected_Get = catchAsync(async (req, res, next) => {
-  console.log('aaa');
+  // console.log('aaa');
   const token = req.headers?.authorization?.startsWith('Bearer')
     ? req.headers.authorization.split(' ')[1]
     : '';
 
   jwt.verify(token, process.env.JWT_SECRET, async function (err, decoded) {
     const user = await User.findById(decoded?.id);
-    console.log(user);
+    // console.log(user);
     if (user?.activation_hash)
       return res.status(200).json({ status: 'success', token });
     next(new AppError('You are not logged in. Authentication Failed!', 401));
