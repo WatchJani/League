@@ -1,6 +1,4 @@
 const { Router } = require('express');
-//izbaciti
-const multer = require('multer');
 
 const authController = require('../controllers/authController');
 const {
@@ -30,18 +28,6 @@ router.post('/', authController.createPendingUser_Post);
 
 //izbaciti
 
-const Storage = multer.diskStorage({
-  destination: 'uploads',
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + file?.originalname);
-  },
-});
-
-const uploadd = multer({
-  storage: Storage,
-});
-
-router.post('/image', uploadd.single('image'), authController.image);
 
 router
   .route('/:id')
