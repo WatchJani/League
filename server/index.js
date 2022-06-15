@@ -12,6 +12,7 @@ const authRoutes = require('./routes/authRoutes');
 const Player = require('./models/playerModel');
 const League = require('./models/leagueModel');
 const Season = require('./models/seasonModel');
+const seasonGenerator = require('./routes/seasonsGenerator')
 
 const app = express();
 
@@ -50,6 +51,7 @@ app.use('/api/v1/teams', routesFactory(Team));
 app.use('/api/v1/players', routesFactory(Player));
 app.use('/api/v1/leagues', routesFactory(League));
 app.use('/api/v1/seasons', routesFactory(Season));
+app.use('/api/v1/seasons/generator', (seasonGenerator))
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Route ${req.originalUrl} is not defined!`, 404));
