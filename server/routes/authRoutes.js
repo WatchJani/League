@@ -26,8 +26,6 @@ router.get('/protected', authController.protected_Get);
 router.get('/', getAll(User));
 router.post('/', authController.createPendingUser_Post);
 
-//izbaciti
-
 
 router
   .route('/:id')
