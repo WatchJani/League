@@ -10,7 +10,7 @@ export const RegisterJs = ({ type, edit, path, navigate }) => {
   const url = type === 'register' ? `users/register/${id}` : `/${type}/${id}`;
 
   let method = 'post';
-  if (type === 'users' || type === 'register') method = 'patch';
+  if (type === 'users' || type === 'register' || edit) method = 'patch';
   if (path === 'add') method = 'post';
 
   return (

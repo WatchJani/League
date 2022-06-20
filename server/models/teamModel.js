@@ -8,7 +8,11 @@ const teamModel = new mongoose.Schema({
     unique: [true, 'Team with that name already exists!'],
   },
   address: String,
-  image: String,
+  image: {
+    type: String,
+    default:
+      'https://res.cloudinary.com/leagues/image/upload/v1655734382/Leagues/teamDefault_jkzk6u.jpg',
+  },
 });
 
 const Team = mongoose.model('team', teamModel);

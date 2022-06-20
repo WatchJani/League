@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema({
   image: {
     type: String,
     default:
-      'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?20170328184010',
+      'https://res.cloudinary.com/leagues/image/upload/v1655734401/Leagues/avatar_bo7zjb.png',
   },
   address: String,
 });

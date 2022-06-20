@@ -14,7 +14,8 @@ const leagueSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    default: 'avatar.svg',
+    default:
+      'https://res.cloudinary.com/leagues/image/upload/v1655734382/Leagues/leagueDefault_ekvvr8.png',
   },
 });
 

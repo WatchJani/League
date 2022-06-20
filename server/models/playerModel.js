@@ -25,7 +25,8 @@ const playerSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    default: 'avatar.svg',
+    default:
+      'https://res.cloudinary.com/leagues/image/upload/v1655734401/Leagues/avatar_bo7zjb.png',
   },
 });
 
