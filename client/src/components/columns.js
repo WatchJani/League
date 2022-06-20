@@ -11,7 +11,7 @@ const defaultColumns = [
     sortable: false,
     renderCell: (params) => (
       <img
-        style={{ borderRadius: '50%', width: imgSize, height: imgSize }}
+        style={{ borderRadius: '50%', width: imgSize, height: imgSize, objectFit: "cover" }}
         src={params.value}
       />
     ),
