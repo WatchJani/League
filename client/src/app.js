@@ -10,7 +10,7 @@ import Confirmation from './pages/Confirmation';
 import { AddSeason } from './pages/addSeason/addSeason';
 
 export const App = () => {
-  const RenderTableData = (type, option = false) => (
+  const RenderTableData = (type, navigate = null) => (
     <Route
       path={`/${type}`}
       element={
@@ -19,8 +19,8 @@ export const App = () => {
         </ProtectedRoute>
       }
     >
-      <Route index element={<TableData type={type} secondButton={option} />} />
-      <Route path='add' element={<RegisterJs type={type} path='add' />} />
+      <Route index element={<TableData type={type}  />} />
+      <Route path='add' element={<RegisterJs type={type} navigate={navigate} path='add' />} />
       <Route path='edit/:id' element={<RegisterJs type={type} edit={true} />} />
       <Route path='create' element={<AddSeason />} />
     </Route>
@@ -49,7 +49,7 @@ export const App = () => {
           {RenderTableData('users')}
           {RenderTableData('teams')}
           {RenderTableData('players')}
-          {RenderTableData('seasons', true)}
+          {RenderTableData('seasons', "/seasons/create")}
           {RenderTableData('leagues')}
 
         </Routes>
