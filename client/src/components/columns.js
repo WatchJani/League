@@ -3,6 +3,16 @@ import EditCell from './EditCell';
 const imgSize = 40;
 
 const defaultColumns = [
+  {
+    field: 'edit',
+    headerName: 'Edit',
+    sortable: false,
+    renderCell: (params) => <EditCell id={params.id} />,
+    width: 105,
+  },
+];
+
+export const userColumns = [
   { field: '_id', headerName: 'ID', width: 70 },
   {
     field: 'image',
@@ -17,16 +27,6 @@ const defaultColumns = [
     ),
     width: 100,
   },
-  {
-    field: 'edit',
-    headerName: 'Edit',
-    sortable: false,
-    renderCell: (params) => <EditCell id={params.id} />,
-    width: 105,
-  },
-];
-
-export const userColumns = [
   ...defaultColumns,
   { field: 'name', headerName: 'Name', width: 130 },
   { field: 'lastName', headerName: 'Last name', width: 130 },
@@ -43,6 +43,20 @@ export const userColumns = [
 ];
 
 export const teamColumns = [
+  { field: '_id', headerName: 'ID', width: 70 },
+  {
+    field: 'image',
+    headerName: 'Avatar',
+    editable: true,
+    sortable: false,
+    renderCell: (params) => (
+      <img
+        style={{ borderRadius: '50%', width: imgSize, height: imgSize, objectFit: "cover" }}
+        src={params.value}
+      />
+    ),
+    width: 100,
+  },
   ...defaultColumns,
   { field: 'name', headerName: 'Name', width: 130 },
   {
@@ -54,6 +68,20 @@ export const teamColumns = [
 ];
 
 export const playerColumns = [
+  { field: '_id', headerName: 'ID', width: 70 },
+  {
+    field: 'image',
+    headerName: 'Avatar',
+    editable: true,
+    sortable: false,
+    renderCell: (params) => (
+      <img
+        style={{ borderRadius: '50%', width: imgSize, height: imgSize, objectFit: "cover" }}
+        src={params.value}
+      />
+    ),
+    width: 100,
+  },
   ...defaultColumns,
   { field: 'name', headerName: 'Name', width: 130 },
   { field: 'lastName', headerName: 'Last name', width: 130 },
@@ -62,6 +90,7 @@ export const playerColumns = [
 ];
 
 export const seasonColumns = [
+  { field: '_id', headerName: 'ID', width: 70 },
   ...defaultColumns,
   { field: 'name', headerName: 'Name', width: 130 },
   {
@@ -85,6 +114,20 @@ export const seasonColumns = [
 ];
 
 export const leagueColumns = [
+  { field: '_id', headerName: 'ID', width: 70 },
+  {
+    field: 'image',
+    headerName: 'Avatar',
+    editable: true,
+    sortable: false,
+    renderCell: (params) => (
+      <img
+        style={{ borderRadius: '50%', width: imgSize, height: imgSize, objectFit: "cover" }}
+        src={params.value}
+      />
+    ),
+    width: 100,
+  },
   ...defaultColumns,
   { field: 'name', headerName: 'Name', width: 130 },
   {
