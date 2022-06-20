@@ -17,28 +17,29 @@ exports.deleteOne = (Model) =>
 
 exports.updateOne = (Model) =>
   catchAsync(async (req, res, next) => {
-    const { password, name, lastName, phone, address, role } = req.body;
+    const {
+      password,
+      name,
+      lastName,
+      phone,
+      address,
+      role,
+      actual,
+      number,
+      locked,
+      height,
+      weight,
+    } = req.body;
 
     const image = req.file?.path;
-    console.log(req.file);
 
-    const doc = await Model.findByIdAndUpdate(
-      req.params.id,
-      {
-        password,
-        name,
-        lastName,
-        phone,
-        address,
-        role,
-        image,
-        activation_hash: true,
-      },
-      {
-        new: true,
-        runValidators: true,
-      }
-    );
+    const doc = await Model.findById(req.params.id).select('+password');
+
+    doc.activation_hash = true;
+    image && (doc.image = image);
+    Object.entries(req.body).forEach(([key, value]) => (doc[key] = value));
+
+    await doc.save();
 
     if (!doc) {
       return next(new AppError('No document found with that ID', 404));

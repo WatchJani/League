@@ -47,7 +47,7 @@ module.exports.createPendingUser_Post = catchAsync(async (req, res, next) => {
 });
 
 module.exports.register_Patch = catchAsync(async (req, res, next) => {
-  const { password, name, lastName, phone, address, role } = req.body;
+  const { password, name, lastName } = req.body;
   const image = req.file?.path;
   const id = req.params.id;
 
@@ -64,13 +64,8 @@ module.exports.register_Patch = catchAsync(async (req, res, next) => {
       return next(new AppError('You are already registrered!'));
 
     user.activation_hash = true;
-    user.name = name;
-    user.lastName = lastName;
-    user.password = password;
-    user.phone = phone;
-    user.address = address;
-    user.role = role;
     user.image = image;
+    Object.entries(req.body).forEach(([key, value]) => (user[key] = value));
 
     await user.save();
     res.status(201).json({ status: 'success', data: { user } });
