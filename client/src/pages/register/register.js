@@ -23,9 +23,12 @@ export const Register = ({ podaci, value, pageNavigate, url, method }) => {
     setLoading(true);
     const formData = new FormData();
 
-    podaci.forEach((atributtes) =>
-      formData.append(atributtes.name, data[atributtes.name])
-    );
+    podaci.forEach((atributtes) => {
+      if (!data[atributtes.name]) return;
+      formData.append(atributtes.name, data[atributtes.name]);
+    });
+
+    console.log(data);
 
     const sendData = data.image ? formData : data;
 
