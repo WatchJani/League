@@ -20,7 +20,7 @@ const routesFactory = (Model) => {
   router
     .route('/:id')
     .get(getOne(Model))
-    .patch(updateOne(Model))
+    .patch(upload.single('image'), updateOne(Model))
     .delete(deleteOne(Model));
 
   return router;

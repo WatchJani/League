@@ -17,11 +17,10 @@ exports.deleteOne = (Model) =>
 
 exports.updateOne = (Model) =>
   catchAsync(async (req, res, next) => {
-    if (!req.body) return;
     const { password, name, lastName, phone, address, role } = req.body;
 
-    console.log(password, name);
     const image = req.file?.path;
+    console.log(req.file);
 
     const doc = await Model.findByIdAndUpdate(
       req.params.id,
@@ -40,8 +39,6 @@ exports.updateOne = (Model) =>
         runValidators: true,
       }
     );
-
-    console.log(doc);
 
     if (!doc) {
       return next(new AppError('No document found with that ID', 404));

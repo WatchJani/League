@@ -28,9 +28,8 @@ export const Register = ({ podaci, value, pageNavigate, url, method }) => {
       formData.append(atributtes.name, data[atributtes.name]);
     });
 
-    console.log(data);
-
     const sendData = data.image ? formData : data;
+    console.log(url);
 
     axios
       .request({ url, data: sendData, method })
