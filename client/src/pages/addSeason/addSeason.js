@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from '../../utils/axiosBackend';
 import { useNavigate } from 'react-router-dom';
+import Styled from "./addSeason.module.css"
 
 export const AddSeason = () => {
     let navigate = useNavigate();
@@ -58,10 +59,10 @@ export const AddSeason = () => {
     console.log(checkedState)
 
     return (
-        <form onSubmit={Submit}>
+        <form onSubmit={Submit} className={Styled.addSeasonForm}>
             {allClubs.map(({ name }, index) => {
                 return (
-                    <div key={index}>
+                    <div key={index} className={Styled.ChackBoxSeason}>
                         <input
                             type="checkbox"
                             id={index}
@@ -70,6 +71,7 @@ export const AddSeason = () => {
                             checked={checkedState[index]}
                             onChange={() => handleOnChange(index)}
                         />
+                        <div className={Styled.Dot}></div>
                         <label htmlFor={index}>{name}</label>
                     </div>
                 );
