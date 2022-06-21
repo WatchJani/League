@@ -62,17 +62,22 @@ export const AddSeason = () => {
         <form onSubmit={Submit} className={Styled.addSeasonForm}>
             {allClubs.map(({ name }, index) => {
                 return (
-                    <div key={index} className={Styled.ChackBoxSeason}>
+                    <div key={index} className={Styled.ChackBoxSeason}
+                    onClick={
+                        () => handleOnChange(index)
+                    }
+                    
+                    >
                         <input
                             type="checkbox"
                             id={index}
                             name={name}
                             value={name}
                             checked={checkedState[index]}
-                            onChange={() => handleOnChange(index)}
+                            // onChange={() => handleOnChange(index)}
                         />
                         <div className={Styled.Dot}></div>
-                        <label htmlFor={index}>{name}</label>
+                        <label htmlFor={index} onClick={e =>e.preventDefault()}>{name}</label>
                     </div>
                 );
             })}
