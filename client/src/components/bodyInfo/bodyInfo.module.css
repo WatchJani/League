@@ -1,0 +1,37 @@
+.bodyInfo {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  max-width: 575px;
+}
+
+.match {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  height: 72px;
+
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px);
+}
+.noLogo {
+  width: 64px;
+  height: 64px;
+  background: #3b6527;
+}
+.logoAndPoints {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.homeTeamName {
+  width: 100%;
+  text-align: right;
+}
+.visitorsTeamName {
+  width: 100%;
+}
