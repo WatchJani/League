@@ -41,7 +41,7 @@ module.exports.createPendingUser_Post = catchAsync(async (req, res, next) => {
     path: '/',
   });
 
-  // nodemailer.sendConfirmationEmail(user.email, token);
+  nodemailer.sendConfirmationEmail(user.email, token);
 
   res.status(201).json({ status: 'success', data: { token, email } });
 });
