@@ -1,5 +1,9 @@
-.moreInfo{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.moreInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+tr > *{
+  width: 300px;
+  text-align: center;
 }

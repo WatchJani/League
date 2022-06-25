@@ -11,7 +11,7 @@ const ProtectedRoute = ({ children }) => {
     axios
       .get('/users/protected', { headers: authHeader() })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res?.data?.token) return setVerified(true);
       })
       .catch((err) => {

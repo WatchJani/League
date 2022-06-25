@@ -4,13 +4,11 @@ const path = require('path')
 
 
 const transport = nodemailer.createTransport({
-    service: "yandex/google",
-    host: "smtp.ethereal.email",
-    port: 587,
+    service: "gmail",
     secure: false,
     auth: {
-        user: 'scoretracker@yandex.com',
-        pass: 'gfbgekmjsbjcxfau' //Goals1999@ gfbgekmjsbjcxfau
+        user: 'leagueleague49@gmail.com',
+        pass: 'ctmiajgsplgtchrk' //Goals1999@ gfbgekmjsbjcxfau
     },
     tls: {
         // do not fail on invalid certs
@@ -38,7 +36,7 @@ module.exports.sendConfirmationEmail = (email, confirmationCode) => {
     let name = email.substring(0, email.lastIndexOf("@"));
 
     transport.sendMail({
-        from: "scoretracker@yandex.com",
+        from: "leagueleague49@gmail.com",
         to: email,
         subject: "Please confirm your account",
         template: 'email',
