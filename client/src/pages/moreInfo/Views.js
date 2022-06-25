@@ -1,5 +1,8 @@
 import HeaderInfo from "../../components/headerInfo/headerInfo";
 import BodyInfo from "../../components/bodyInfo/bodyInfo";
+import Styled from "./views.module.css";
+import React, { useState } from 'react';
+
 
 export const seasonView = (round, index) => (
   <div key={index}>
@@ -15,9 +18,28 @@ export const TabelView = ({ tableColumns, tabelData }) => (
   </table>
 );
 
-export const Tabs = ({data}) => {return <h1>fuck</h1>}
 
 
+
+export const Tabs = ({ data }) => {
+  const [currentTab, setCurrentTab] = useState(data.tabs[0]);
+  
+  return (
+    <div className={Styled.tabView}>
+      <div className={Styled.tabs}>
+        {data.tabs.map((tab, tabNumber) => {
+          return (
+            <p key={tabNumber} data-index={tabNumber} className={Styled.tab} onClick={e=>setCurrentTab(data.tabs[e.target.dataset.index])}>
+              {tab.ime}
+            </p>
+          );
+        })}
+      </div>
+    <TabelView tableColumns={data.tableColumns} tabelData={currentTab[data.arrayName]}/>
+    </div>
+
+  );
+};
 
 const tabelHeader = (tableColumns) => (
   <thead>
