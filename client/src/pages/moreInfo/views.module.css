@@ -3,11 +3,15 @@
   gap: 12px;
 }
 .tab {
-    padding: .5rem;
-    background: #e7e7e7;
-    border-radius: 16px 16px 0px 0;
-    cursor: pointer;
+  padding: 0.5rem;
+  background: #e7e7e7;
+  border-radius: 16px 16px 0px 0;
+  cursor: pointer;
 }
-.tabView{
-
+.tabView {
+}
+.currentTab {
+  background: #1976d2;
+  color: white;
+  font-weight: bold;
 }
