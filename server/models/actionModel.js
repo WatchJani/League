@@ -4,7 +4,20 @@ const actionSchema = new mongoose.Schema({
     minute: {
         type: Number
     },
-    enum: ["START_GAME, HALF_TIME, END_GAME, PLAY, SHOT, GOAL, ASSIST, AUTO_GOAL, FOUL, PENALTY, CORNER, YELLOW, RED, SUSPENSION_2_MIN"]
+    enum: ["START_GAME, HALF_TIME, END_GAME, PLAY, SHOT, GOAL, ASSIST, AUTO_GOAL, FOUL, PENALTY, CORNER, YELLOW, RED, SUSPENSION_2_MIN"],
+
+
+
+
+
+    players: {
+        type: Array,
+        default: []
+    },
+    fixture: {
+        type: Array,
+        default: []
+    }
 });
 
 const Action = mongoose.model('action', actionSchema);

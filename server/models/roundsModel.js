@@ -3,6 +3,13 @@ const mongoose = require('mongoose');
 const roundSchema = new mongoose.Schema({
     number: {
         type: Number
+    },
+
+
+
+    fixture: {
+        type: Array,
+        default: []
     }
 });
 

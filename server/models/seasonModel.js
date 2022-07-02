@@ -15,6 +15,18 @@ const seasonSchema = new mongoose.Schema({
     required: [true, "Please enter your season's name"],
     minlength: [2, "Minimum season's name length is 2 characters"],
   },
+
+
+
+  
+  round: {
+    type: Array,
+    default: []
+  },
+  league: {
+    type: Array,
+    default: []
+  }
 });
 
 const Season = mongoose.model('season', seasonSchema);

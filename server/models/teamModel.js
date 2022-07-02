@@ -13,6 +13,15 @@ const teamSchema = new mongoose.Schema({
     default:
       'https://res.cloudinary.com/leagues/image/upload/v1655734382/Leagues/teamDefault_jkzk6u.jpg',
   },
+
+
+
+
+  
+  players: {
+    type: Array,
+    default: [],
+  }
 });
 
 const Team = mongoose.model('team', teamSchema);

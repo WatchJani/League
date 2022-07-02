@@ -1,0 +1,66 @@
+[
+    {
+        "_id": "2132516546545454fd5454f6d",
+        "name": "Barcelona",
+        "address": "Adresa",
+        "image": "naziv_slike.jpg",
+        "players": [
+            {
+                "_id": "2132516546545454fd5454f6d",
+                "name": "Marc-André",
+                "lastName": "ter Stegen",
+                "height": 169,
+                "weight": 70,
+                "image": "string_avatara_igraca.jpg"
+            },
+            {
+                "_id": "2132516546545454fd5454f6d",
+                "name": "Marc-André",
+                "lastName": "ter Stegen",
+                "height": 169,
+                "weight": 70,
+                "image": "string_avatara_igraca.jpg"
+            },
+            {
+                "_id": "2132516546545454fd5454f6d",
+                "name": "Marc-André",
+                "lastName": "ter Stegen",
+                "height": 169,
+                "weight": 70,
+                "image": "string_avatara_igraca.jpg"
+            }
+        ]
+    },
+    {
+        "_id": "2132516546545454fd5454f6d",
+        "name": "Barcelona",
+        "address": "Adresa",
+        "image": "naziv_slike.jpg",
+        "players": [
+            {
+                "_id": "2132516546545454fd5454f6d",
+                "name": "Marc-André",
+                "lastName": "ter Stegen",
+                "height": 169,
+                "weight": 70,
+                "image": "string_avatara_igraca.jpg"
+            },
+            {
+                "_id": "2132516546545454fd5454f6d",
+                "name": "Marc-André",
+                "lastName": "ter Stegen",
+                "height": 169,
+                "weight": 70,
+                "image": "string_avatara_igraca.jpg"
+            },
+            {
+                "_id": "2132516546545454fd5454f6d",
+                "name": "Marc-André",
+                "lastName": "ter Stegen",
+                "height": 169,
+                "weight": 70,
+                "image": "string_avatara_igraca.jpg"
+            }
+        ]
+    }
+]

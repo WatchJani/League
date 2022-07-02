@@ -28,6 +28,7 @@ const playerSchema = new mongoose.Schema({
     default:
       'https://res.cloudinary.com/leagues/image/upload/v1655734401/Leagues/avatar_bo7zjb.png',
   },
+
 });
 
 const Player = mongoose.model('player', playerSchema);
