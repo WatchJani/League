@@ -72,4 +72,4 @@ const fixtureSchema = new mongoose.Schema({
 });
 
 const Fixture = mongoose.model('ficture', fixtureSchema);
-module.exports = Action;
+module.exports = Fixture;
