@@ -136,10 +136,10 @@ const Player = [
         auto_goals: 1,
         play_mech: 1000,
         shot: 1500,
-        pass: 5000,
+        pass: 5001,
       },
     },
   },
 ];
 
-export { Season, Team, Leagues, Player_tab1, Player_tab2, Player };
+export { Season, Team, Leagues,  Player };
