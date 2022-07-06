@@ -2,9 +2,9 @@ import HeaderInfo from "../../components/headerInfo/headerInfo";
 import BodyInfo from "../../components/bodyInfo/bodyInfo";
 import Styled from "./views.module.css";
 import React, { useState } from "react";
-import { Player } from "./testData";
 
-const data = Player;
+// izvor: https://codesandbox.io/s/collapsible-table-rows-in-react-ybb28?file=/anim.js
+
 export const seasonView = (round, index) => (
   <div key={index}>
     <HeaderInfo round={round} />
@@ -19,50 +19,85 @@ export const TabelView = ({ tableColumns, tabelData }) => (
   </table>
 );
 
-export const TableWithSubcontant = (tableColumns, mainData, hiddenData) => (
+export const TableWithSubcontent = ({ tableColumns, content }) => (
   <table>
+    {console.log(content)}
     <TableHeader tableColumns={tableColumns} />
-    <BiggerTableContant
-      arrayOfObjectsForVisibleRows={mainData}
-      arrayOfObjectsForHiddenRows={hiddenData}
-    />
+    <BiggerTableContent data={content} tableColumns={tableColumns} />
   </table>
 );
 
+// const rowContent = (arrayOfObjects) => {
+//   let row = [],
+//     rowNumber = 0;
+//   for (const object of arrayOfObjects) {
+//     let columnNumber = 0;
+//     row.push([]);
+//     for (const property in object) {
+//       if (
+//         property !== object.nameOfArray &&
+//         object[property] !== object.nameOfArray
+//       )
+//         row[rowNumber].push(<td key={columnNumber++}>{object[property]}</td>);
+//     }
+//     rowNumber++;
+//   }
 
-const BiggerTableContant = (
-  arrayOfObjectsForVisibleRows = null,
-  arrayOfObjectsForHiddenRows = null
-) => {
-  let rowContent = [];
-  let hiddenRowContent = [];
-  arrayOfObjectsForVisibleRows.map((object, objectsIndex) => {
-    let columnNumber = 0;
-    rowContent.push([]);
-    for (let prop in object) {
-      rowContent[objectsIndex].push(
-        <td key={columnNumber++}>{object[prop]}</td>
-      );
-    }
-  });
+//   return row;
+// };
 
-  arrayOfObjectsForHiddenRows.map();
-
-  return (
-    <tbody>
-      {arrayOfObjectsForVisibleRows.map((_, index) => (
-        <tr key={index}>{rowContent[index]}</tr>
-      ))}
-    </tbody>
-  );
-
+const BiggerTableContent = ({ data, tableColumns }) => (
   <tbody>
-    {/* visible row visibleRowContant*/}
-    {/* {/* hidden row hiddenRowsData (table, season view/} */}
-  </tbody>;
+    {data.map((row, index) => (
+      <DataRow key={index} data={data[index]} tableColumns={tableColumns} />
+    ))}
+  </tbody>
+);
+
+const DataRow = ({ data, tableColumns }) => {
+  const MainRow = ({ onClick }) => (
+    <tr onClick={onClick}>
+      {tableColumns.map((name, index) => (
+        <td key={index}>{data[name]}</td>
+      ))}
+    </tr>
+  );
+  const HiddenRow = ({ data }) => (
+    <tr>
+      <td colSpan={3}>
+        <div>
+          <tabel>
+            <thead>
+              <th>colona 1</th>
+              <th>colona 2</th>
+              <th>colona 3</th>
+              <th>colona 4</th>
+            </thead>
+            <tbody>
+              {data.map(
+                (row, index)=>
+                <tr key={index}>
+                  <td> {row.name}</td>
+                  <td> {row.number}</td>
+                  <td> {row.actual? 'true' : 'false'}</td>
+                  <td> {row.locked}</td>
+                </tr>
+              )}
+            </tbody>
+          </tabel>
+        </div>
+      </td>
+    </tr>
+  );
+  const [isExtended, setIsExtended] = useState(false);
+  return [
+    <MainRow key="main" onClick={() => setIsExtended(!isExtended)} />,
+    isExtended && <HiddenRow key="hidden" data={data[data.nameOfArray]} />,
+  ];
 };
 
-const TableHeader = (tableColumns) => (
+
+const TableHeader = ({ tableColumns }) => (
   <thead>
     <tr>
       {tableColumns.map((title, index) => (
@@ -83,6 +118,7 @@ const tabelContent = (arrayOfObjects) => {
         <td key={columnNumber++}>{player[playersProp]}</td>
       );
     }
+    return true;
   });
 
   return (
@@ -107,7 +143,7 @@ export const Tabs = ({ data }) => {
               data-index={tabNumber}
               className={
                 Styled.tab +
-                (currentIndex == tabNumber ? " " + Styled.currentTab : "")
+                (currentIndex === tabNumber ? " " + Styled.currentTab : "")
               }
               onClick={(e) => {
                 setCurrentIndex(e.target.dataset.index);

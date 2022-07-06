@@ -92,3 +92,8 @@ nav a {
   font-size: 1.3em;
   text-decoration: none;
 }
+
+table{
+  width: 100%;
+  max-width: 1024px;
+}

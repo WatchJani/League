@@ -9,8 +9,10 @@ import TableData from './components/TableData';
 import Confirmation from './pages/Confirmation';
 import { AddSeason } from './pages/addSeason/addSeason';
 // import { MoreInfo } from './pages/moreInfo/moreInfo';
-import {TableWithSubcontant} from './pages/moreInfo/Views'
+import {TableWithSubcontent} from './pages/moreInfo/Views'
 //sta radis ti tu??????????
+import { Table } from './pages/moreInfo/moreInfo';
+
 
 export const App = () => {
   const RenderTableData = (type, navigate = null) => (
@@ -22,7 +24,8 @@ export const App = () => {
         </ProtectedRoute>
       }
     >
-      <Route index element={<TableData type={type} />} />  
+      {/* <Route index element={<TableData type={type} />} />   */}
+      <Route index element={<Table />} />  
       {/* linija 24, ja tu trebam da stavim svoju tabelu, ili treba da izmenu komponentu TableData?  */}
       <Route path='add' element={<RegisterJs type={type} navigate={navigate} path='add' />} />
       <Route path='edit/:id' element={<RegisterJs type={type} edit={true} />} />
