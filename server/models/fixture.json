@@ -1,0 +1,26 @@
+{
+    "dataOfMatch": "20.12.2022.",
+    "status": "past",
+    "realStartTime": "2022-12-20-021-1230",
+    "realEndTime": "2022-12-20-021-1230",
+    "home": {
+        "Goals": 1,
+        "Fauls": 12,
+        "Penalties": 0,
+        "Shots": 15,
+        "ShotsOnTarget": 12,
+        "Yelow": 2,
+        "Red": 0,
+        "Corners": 5
+    },
+    "away": {
+        "Goals": 0,
+        "Fauls": 15,
+        "Penalties": 0,
+        "Shots": 2,
+        "ShotsOnTarget": 1,
+        "Yelow": 6,
+        "Red": 0,
+        "Corners": 0
+    }
+}

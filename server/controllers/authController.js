@@ -30,7 +30,6 @@ module.exports.login_Post = catchAsync(async (req, res, next) => {
 });
 
 module.exports.createPendingUser_Post = catchAsync(async (req, res, next) => {
-  console.log('aaa');
   const email = req.body.email;
   const user = await User.create({ email });
 

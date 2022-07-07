@@ -1,0 +1,54 @@
+[
+    {
+        "_id": "545654546546",
+        "minut": 12,
+        "action": "goal",
+        "player": {
+            "_id": "545654546536",
+            "FirsName": "Leonel",
+            "LastName": "Messi",
+            "height": 169,
+            "width": 70,
+            "team": "Barcelona"
+        },
+        "fixture": {
+            "_id": "65446554asd4",
+            "dateOfMetch": "2022-07-23",
+            "status": "planirano",
+            "HomeTeam": {
+                "name": "Barcelona",
+                "address": "Spanija"
+            },
+            "AwayTeam": {
+                "name": "Real Madrid",
+                "address": "Spanija"
+            }
+        }
+    },
+    {
+        "_id": "545654546546",
+        "minut": 13,
+        "action": "red Card",
+        "player": {
+            "_id": "545654546536",
+            "FirsName": "Leonel",
+            "LastName": "Messi",
+            "height": 169,
+            "width": 70,
+            "team": "Barcelona"
+        },
+        "fixture": {
+            "_id": "65446554asd4",
+            "dateOfMetch": "2022-07-23",
+            "status": "planirano",
+            "HomeTeam": {
+                "name": "Barcelona",
+                "address": "Spanija"
+            },
+            "AwayTeam": {
+                "name": "Real Madrid",
+                "address": "Spanija"
+            }
+        }
+    }
+]

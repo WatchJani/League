@@ -38,7 +38,7 @@ module.exports.Generate = catchAsync(async (req, res, next) => {
     for (let p = 0; p < leagueSchedule.length; p++) {
         console.log(leagueSchedule[p])
     }
-
+    
 
     res.send(teams)
     // const { password, name, lastName, phone, address, role } = req.body;

@@ -1,0 +1,36 @@
+[
+    {
+        "round": 1,
+        "play": [
+            [
+                "Barcelona",
+                "Real Madrid"
+            ],
+            [
+                "Atletiko Madrid",
+                "Juventus"
+            ],
+            [
+                "Manchester City",
+                "Bayern Minchen"
+            ]
+        ]
+    },
+    {
+        "round": 2,
+        "play": [
+            [
+                "Atletiko Madrid",
+                "Real Madrid"
+            ],
+            [
+                "Atletiko Madrid",
+                "Barcelona"
+            ],
+            [
+                "Bayern Minchen",
+                "Manchester City"
+            ]
+        ]
+    }
+]

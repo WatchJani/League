@@ -18,7 +18,7 @@ const seasonSchema = new mongoose.Schema({
 
 
 
-  
+
   round: {
     type: Array,
     default: []
