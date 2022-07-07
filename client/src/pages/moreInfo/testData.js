@@ -7,7 +7,7 @@ const Season = {
     {
       id: 1,
       number: 1,
-      fictures: [
+      fixtures: [
         {
           homeTeam: "Barcelona",
           visitorsTeam: "Atletiko",
@@ -21,7 +21,7 @@ const Season = {
     {
       id: 2,
       number: 2,
-      fictures: [
+      fixtures: [
         {
           homeTeam: "Barcelona",
           visitorsTeam: "Atletiko",
@@ -52,7 +52,7 @@ const Team = {
   ],
 };
 
-// ! TODO: doing Leagues/moreinfo (tableView)
+// ! TODO: doing Leagues/moreInfo (tableView)
 const Leagues = [
   {
     nameOfArray: "sesonse",

@@ -8,10 +8,28 @@
   border-radius: 16px 16px 0px 0;
   cursor: pointer;
 }
-.tabView {
-}
+
 .currentTab {
   background: #1976d2;
   color: white;
   font-weight: bold;
 }
+table {
+  border-collapse: collapse;
+}
+.mainTable {
+  margin: 30px;
+}
+td {
+  border-top: 1px solid #ededed;
+  padding: 1rem;
+}
+th {
+  padding: 1rem;
+  text-align: left;
+}
+.hiddenRow > td{
+  padding: 0;
+  padding-left: 30px;
+}
+

@@ -1,9 +1,9 @@
 import React from "react";
 import Styled from "./bodyInfo.module.css";
-function BodyInfo({ fictures }) {
+function BodyInfo({ fixtures }) {
   return (
     <div className={Styled.bodyInfo}>
-      {fictures.map((match, index) => (
+      {fixtures.map((match, index) => (
         <div className={Styled.match} key={index}>
           <p className={Styled.homeTeamName}>{match.homeTeam} </p>
           <div className={Styled.logoAndPoints}>

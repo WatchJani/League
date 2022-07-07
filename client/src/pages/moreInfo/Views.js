@@ -3,58 +3,53 @@ import BodyInfo from "../../components/bodyInfo/bodyInfo";
 import Styled from "./views.module.css";
 import React, { useState } from "react";
 
-// izvor: https://codesandbox.io/s/collapsible-table-rows-in-react-ybb28?file=/anim.js
+// resoure: https://codesandbox.io/s/collapsible-table-rows-in-react-ybb28?file=/anim.js
 
 export const seasonView = (round, index) => (
   <div key={index}>
     <HeaderInfo round={round} />
-    <BodyInfo fictures={round.fictures} />
+    <BodyInfo fixtures={round.fixtures} />
   </div>
 );
 
-export const TabelView = ({ tableColumns, tabelData }) => (
+export const TableView = ({ tableColumns, tableData }) => (
   <table>
-    {TableHeader(tableColumns)}
-    {tabelContent(tabelData)}
-  </table>
-);
-
-export const TableWithSubcontent = ({ tableColumns, content }) => (
-  <table>
-    {console.log(content)}
     <TableHeader tableColumns={tableColumns} />
-    <BiggerTableContent data={content} tableColumns={tableColumns} />
+    <TableContent arrayOfObjects={tableData} />
   </table>
 );
 
-// const rowContent = (arrayOfObjects) => {
-//   let row = [],
-//     rowNumber = 0;
-//   for (const object of arrayOfObjects) {
-//     let columnNumber = 0;
-//     row.push([]);
-//     for (const property in object) {
-//       if (
-//         property !== object.nameOfArray &&
-//         object[property] !== object.nameOfArray
-//       )
-//         row[rowNumber].push(<td key={columnNumber++}>{object[property]}</td>);
-//     }
-//     rowNumber++;
-//   }
+export const TableWithSubcontent = ({
+  tableColumns,
+  content,
+  subTableColumns,
+  type,
+}) => (
+  <table className={Styled.mainTable}>
+    <TableHeader tableColumns={tableColumns} />
+    <BiggerTableContent
+      data={content}
+      tableColumns={tableColumns}
+      subTableColumns={subTableColumns}
+      subcontentType={type}
+    />
+  </table>
+);
 
-//   return row;
-// };
-
-const BiggerTableContent = ({ data, tableColumns }) => (
+const BiggerTableContent = ({ data, tableColumns, subTableColumns }) => (
   <tbody>
     {data.map((row, index) => (
-      <DataRow key={index} data={data[index]} tableColumns={tableColumns} />
+      <DataRow
+        key={index}
+        data={row}
+        tableColumns={tableColumns}
+        subTableColumns={subTableColumns}
+      />
     ))}
   </tbody>
 );
 
-const DataRow = ({ data, tableColumns }) => {
+const DataRow = ({ data, tableColumns, subTableColumns }) => {
   const MainRow = ({ onClick }) => (
     <tr onClick={onClick}>
       {tableColumns.map((name, index) => (
@@ -62,29 +57,11 @@ const DataRow = ({ data, tableColumns }) => {
       ))}
     </tr>
   );
-  const HiddenRow = ({ data }) => (
-    <tr>
+  const HiddenRow = ({ data, subTableColumns }) => (
+    <tr className={Styled.hiddenRow}>
       <td colSpan={3}>
         <div>
-          <tabel>
-            <thead>
-              <th>colona 1</th>
-              <th>colona 2</th>
-              <th>colona 3</th>
-              <th>colona 4</th>
-            </thead>
-            <tbody>
-              {data.map(
-                (row, index)=>
-                <tr key={index}>
-                  <td> {row.name}</td>
-                  <td> {row.number}</td>
-                  <td> {row.actual? 'true' : 'false'}</td>
-                  <td> {row.locked}</td>
-                </tr>
-              )}
-            </tbody>
-          </tabel>
+          <TableView tableColumns={subTableColumns} tableData={data} />
         </div>
       </td>
     </tr>
@@ -92,10 +69,15 @@ const DataRow = ({ data, tableColumns }) => {
   const [isExtended, setIsExtended] = useState(false);
   return [
     <MainRow key="main" onClick={() => setIsExtended(!isExtended)} />,
-    isExtended && <HiddenRow key="hidden" data={data[data.nameOfArray]} />,
+    isExtended && (
+      <HiddenRow
+        key="hidden"
+        data={data[data.nameOfArray]}
+        subTableColumns={subTableColumns}
+      />
+    ),
   ];
 };
-
 
 const TableHeader = ({ tableColumns }) => (
   <thead>
@@ -107,7 +89,7 @@ const TableHeader = ({ tableColumns }) => (
   </thead>
 );
 
-const tabelContent = (arrayOfObjects) => {
+const TableContent = ({ arrayOfObjects }) => {
   let rowContent = [];
 
   arrayOfObjects.map((player, playerNumber) => {
@@ -123,7 +105,7 @@ const tabelContent = (arrayOfObjects) => {
 
   return (
     <tbody>
-      {arrayOfObjects.map((player, index) => (
+      {arrayOfObjects.map((_, index) => (
         <tr key={index}>{rowContent[index]}</tr>
       ))}
     </tbody>
@@ -155,9 +137,9 @@ export const Tabs = ({ data }) => {
           );
         })}
       </div>
-      <TabelView
+      <TableView
         tableColumns={data.tableColumns}
-        tabelData={currentTab[data.arrayName]}
+        tableData={currentTab[data.arrayName]}
       />
     </div>
   );

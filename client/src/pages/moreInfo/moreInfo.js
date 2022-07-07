@@ -5,6 +5,14 @@ import { Leagues } from "./testData";
 
 const data = Leagues;
 const tableColumns = ["avatar", "name", "address"];
+const subTableColumns = ["name", "number", "actual", "locked"];
 export const Table = () => {
-  return <TableWithSubcontent tableColumns={tableColumns} content={data} />;
+  return (
+    <TableWithSubcontent
+      tableColumns={tableColumns}
+      content={data}
+      subTableColumns={subTableColumns}
+      type="table"
+    />
+  );
 };
