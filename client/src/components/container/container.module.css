@@ -1,0 +1,10 @@
+.Container {
+  width: min(100% - 4rem, 1280px);
+  margin-inline: auto;
+}
+
+@media (max-width: 600px) {
+  .Container {
+    width: min(100% - 2rem, 1280px);
+  }
+}

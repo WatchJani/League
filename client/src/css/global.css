@@ -6,6 +6,10 @@
   user-select: none;
 }
 
+:root {
+  --height-header: 50px;
+}
+
 html,
 #app,
 body {
@@ -69,7 +73,7 @@ body {
 }
 
 body {
-  overflow: hidden;
+  /* overflow: hidden; */
   height: 100vh;
   width: 100%;
 }
