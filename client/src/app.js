@@ -9,7 +9,10 @@ import TableData from './components/TableData';
 import Confirmation from './pages/Confirmation';
 import { AddSeason } from './pages/addSeason/addSeason';
 import Home from './pages/home2/Home';
-import SingleLeague from './pages/singleLeague/SingleLeague';
+import SingleLeague from './components/view/SingleLeague';
+import TableSingleLeague from './pages/table/TableSingleLeague';
+import FixturesSingleLeague from './pages/fixtures/FixturesSingleLeague';
+import PlayerStatsSingleLeague from './pages/playerStats/PlayerStatsSingleLeague';
 
 export const App = () => {
   const RenderTableData = (type, navigate = null) => (
@@ -61,7 +64,11 @@ export const App = () => {
     <Router>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path=":liga" element={<SingleLeague />} />
+        <Route path=":single_league" element={<SingleLeague />}>
+          <Route path="Table" element={<TableSingleLeague />} />
+          <Route path="Ficture" element={<FixturesSingleLeague />} />
+          <Route path="Player%20Stats" element={<PlayerStatsSingleLeague />} />
+        </Route>
 
         {/* <Route index element={<Home />} />
           <Route path="teams" element={<Teams />}>

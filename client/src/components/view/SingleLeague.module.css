@@ -1,0 +1,11 @@
+.BG {
+  background-image: url("../../assets/stadium-football-background-at-night-free-vector.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+}

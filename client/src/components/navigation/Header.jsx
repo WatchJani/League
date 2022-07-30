@@ -1,6 +1,12 @@
 import Styled from "./Header.module.css"
+import { NavLink } from "react-router-dom"
 
 const Header = ({ menu, league }) => {
+
+    let activeStyle = {
+        backgroundColor: "aliceblue",
+    };
+
     return (
         <header className={Styled.Nav}>
             <div className={Styled.Display}>
@@ -15,7 +21,11 @@ const Header = ({ menu, league }) => {
                 <div className={Styled.Data}></div>
                 {menu && menu.map((menu, index) => {
                     return (
-                        <button key={index} className={Styled.Shape}>{menu}</button>
+                        <NavLink to={menu} style={({ isActive }) =>
+                            isActive ? activeStyle : undefined
+                        } className={Styled.Shape}>
+                            {menu}
+                        </NavLink>
                     )
                 })}
             </div>
